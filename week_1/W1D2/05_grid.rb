@@ -3,7 +3,7 @@
 # (this means that there are n subarrays, each of length m).
 
 def grid(n, m)
-    matrix = Array.new(n) { Array.new(m) }
+    Array.new(n) { Array.new(m) }
 end
 
 result_1 = grid(2, 3)
