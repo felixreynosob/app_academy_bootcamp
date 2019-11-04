@@ -4,6 +4,7 @@
 # The method should return the number of times that the char appears in the string.
 
 require "byebug"
+#debugger
 
 def letter_count(string, char)
     count = 0
