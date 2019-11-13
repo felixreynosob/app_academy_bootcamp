@@ -1,5 +1,10 @@
 require "board"
 
+class Array
+    def self.sum(arr)
+        arr.inject { |sum, el| el + sum }
+    end
+end
 
 puts "\nNOTE: Once you complete all specs, run `ruby lib/play_battleship.rb` in your terminal!"
 
@@ -148,7 +153,8 @@ describe "Board" do
       it "should randomly set 25% of the @grid's elements to :S" do
         board.place_random_ships
         grid = board.instance_variable_get(:@grid)
-        ship_count = grid.map { |row| row.count(:S) }.sum
+        #ship_count = grid.map { |row| row.count(:S) }.sum
+        ship_count = grid.flatten.count(:S)
         expect(ship_count).to eq(25)
       end
 
