@@ -12,7 +12,8 @@
 # pow(3, 4) # => 81
 # pow(4, 3) # => 64
 def pow(base, exponent)
-
+    return 1 if exponent == 0
+    base * pow(base, exponent - 1)
 end
 
 
@@ -35,9 +36,14 @@ end
 # lucas_number(5)   # =>    11
 # lucas_number(9)   # =>    76
 def lucas_number(n)
-
+    return false if n < 0 
+     if n == 0
+        return 2
+     elsif n == 1
+        return 1
+     end
+    lucas_number(n-1) + lucas_number(n-2) 
 end
-
 
 # Write a method, sum_array(array), that takes in an array of numbers.
 # The method should return the total sum of the elements.
@@ -51,7 +57,12 @@ end
 # sum_array([5, 2])         # => 7
 # sum_array([4, 10, -1, 2]) # => 15
 def sum_array(array)
-
+    if array.length == 0
+        return 0
+    elsif array.length == 1
+        return array[0]
+    end        
+    array[-1] + sum_array(array[0...-1])
 end
 
 
@@ -67,7 +78,8 @@ end
 # reverse_string("internet")    # => "tenretni"
 # reverse_string("friends")     # => "sdneirf"
 def reverse_string(str)
-
+    return "" if str.length == 0 
+    str[-1] + reverse_string(str[0...-1])
 end
 
 
@@ -99,6 +111,25 @@ end
 #     1-dimensional array: ['some data']
 #     2-dimensional array: [['some data']]
 #     3-dimensional array: [[['some data']]]
-def flatten(data)
+/[h, e, [[[l], l,] o]]/
 
+def flatten(data)
+    return data if data.is_a?(Array)
+
+    flat_arr = []
+    flat_arr = flatten 
 end
+
+def test(n)
+    if n == 0
+        return 
+    end
+    test(n-1)
+    puts n
+end
+
+test(10)
+
+
+
+
