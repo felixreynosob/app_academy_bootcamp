@@ -111,7 +111,7 @@ end
 #     1-dimensional array: ['some data']
 #     2-dimensional array: [['some data']]
 #     3-dimensional array: [[['some data']]]
-/[h, e, [[[l], l,] o]]/
+
 
 def flatten(data)
     return data if data.is_a?(Array)

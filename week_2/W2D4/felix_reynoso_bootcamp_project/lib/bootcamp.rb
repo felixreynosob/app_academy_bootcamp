@@ -1,5 +1,7 @@
 class Bootcamp
 
+    attr_reader :name, :slogan, :teachers, :students
+
     def initialize(name, slogan, student_capacity)
         @name = name
         @slogan = slogan
@@ -9,25 +11,11 @@ class Bootcamp
         @grades = Hash.new { |hash, k| hash[k] = [] }
     end
 
-    def name
-        @name
-    end
-
-    def slogan
-        @slogan
-    end
-
-    def teachers
-        @teachers
-    end
-
-    def students
-        @students
-    end
 
     def hire(teacher)
         @teachers.push(teacher)
     end
+
 
     def enroll(student)
         if @students.length < @student_capacity
@@ -38,14 +26,17 @@ class Bootcamp
         end
     end
 
+
     def enrolled?(student)
         @students.include?(student)
     end
+
 
     def student_to_teacher_ratio
         ratio = @students.length / @teachers.length.to_f
         return ratio.floor()
     end
+
 
     def add_grade(student, grade)
         if enrolled?(student)
@@ -56,9 +47,11 @@ class Bootcamp
         end
     end
 
+
     def num_grades(student)
         return @grades[student].length
     end
+
 
     def average_grade(student)
         if !enrolled?(student)
