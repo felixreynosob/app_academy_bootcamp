@@ -1,30 +1,73 @@
 # Write a method, least_common_multiple, that takes in two numbers and returns the smallest number that is a mutiple
 # of both of the given numbers
 def least_common_multiple(num_1, num_2)
+    found = false
+    if num_1 <= num_2
+        lcm = num_2
+    else
+        lcm = num_1
+    end
 
+    until found
+        return lcm if (lcm % num_1 == 0) && (lcm % num_2 == 0)
+        lcm += 1 
+    end
 end
 
 
 # Write a method, most_frequent_bigram, that takes in a string and returns the two adjacent letters that appear the
 # most in the string.
 def most_frequent_bigram(str)
+    hash = Hash.new(0)
 
+    (0..(str.length - 1)).each do |i|
+        break if i == (str.length - 1)
+        bigram = str[i] + str[i+1]
+        hash[bigram] += 1
+    end
+
+    result = hash.select { |k, v| k if v == hash.values.max }
+    result.any? { |k, v| return k }
 end
 
 
 class Hash
     # Write a method, Hash#inverse, that returns a new hash where the key-value pairs are swapped
     def inverse
+        new_hash = {}
 
+        self.each do |k, v| 
+            new_hash[k] = v
+            self.delete(k)
+        end
+        
+        new_hash.each { |k, v| self[v] = k }
+        self       
     end
+
 end
 
 
+
+ 
 class Array
     # Write a method, Array#pair_sum_count, that takes in a target number returns the number of pairs of elements that sum to the given target
     def pair_sum_count(num)
+        count = 0
 
+        self.each_with_index do |nbr_1, i|
+            self.each_with_index do |nbr_2, j|
+                next if j <= i 
+                count += 1 if nbr_1 + nbr_2 == num 
+            end
+        end
+
+        count
     end
+
+
+
+
 
     # Write a method, Array#bubble_sort, that takes in an optional proc argument.
     # When given a proc, the method should sort the array according to the proc.
@@ -39,7 +82,30 @@ class Array
     # it does not matter which element goes first (i.e. do nothing).
     #
     # This should remind you of the spaceship operator! Convenient :)
-    def bubble_sort(&prc)
+    def bubble_sort(&prc) 
+        prc ||= Proc.new {|a, b| a <=> b }
+       
+        sorted = false
+        until sorted
+            sorted = true
 
+            (0...self.length - 1).each do |idx|
+                case proc.call(self[idx], self[idx+1])
+
+                when -1 
+                    
+                when 0 
+                   
+                when  1 
+                    self[idx], self[idx+1] = self[idx+1], self[idx]
+                    sorted = false
+                end
+            end
+        end
+
+        self
     end
 end
+
+
+ 
