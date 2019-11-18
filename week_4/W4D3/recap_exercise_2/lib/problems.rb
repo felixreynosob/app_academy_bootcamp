@@ -20,8 +20,7 @@ end
 def most_frequent_bigram(str)
     hash = Hash.new(0)
 
-    (0..(str.length - 1)).each do |i|
-        break if i == (str.length - 1)
+    (0...(str.length - 1)).each do |i|
         bigram = str[i] + str[i+1]
         hash[bigram] += 1
     end
@@ -35,14 +34,8 @@ class Hash
     # Write a method, Hash#inverse, that returns a new hash where the key-value pairs are swapped
     def inverse
         new_hash = {}
-
-        self.each do |k, v| 
-            new_hash[k] = v
-            self.delete(k)
-        end
-        
-        new_hash.each { |k, v| self[v] = k }
-        self       
+        self.each { |k, v| new_hash[v] = k }
+        new_hash    
     end
 
 end
@@ -86,18 +79,12 @@ class Array
         prc ||= Proc.new {|a, b| a <=> b }
        
         sorted = false
-        until sorted
+        while !sorted
             sorted = true
 
-            (0...self.length - 1).each do |idx|
-                case proc.call(self[idx], self[idx+1])
-
-                when -1 
-                    
-                when 0 
-                   
-                when  1 
-                    self[idx], self[idx+1] = self[idx+1], self[idx]
+            (0...self.length - 1).each do |i|
+                if prc.call(self[i], self[i + 1]) == 1
+                    self[i], self[i + 1] = self[i + 1], self[i]
                     sorted = false
                 end
             end
@@ -105,6 +92,7 @@ class Array
 
         self
     end
+    
 end
 
 
