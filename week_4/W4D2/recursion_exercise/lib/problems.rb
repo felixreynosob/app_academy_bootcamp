@@ -1,3 +1,5 @@
+require 'byebug'
+debugger 
 # Write a method, pow(base, exponent), that takes in two numbers.
 # The method should calculate the base raised to the exponent power.
 # You can assume the exponent is always positive.
@@ -36,12 +38,9 @@ end
 # lucas_number(5)   # =>    11
 # lucas_number(9)   # =>    76
 def lucas_number(n)
-    return false if n < 0 
-     if n == 0
-        return 2
-     elsif n == 1
-        return 1
-     end
+    return 2 if n == 0 
+    return 1 if n == 1
+    
     lucas_number(n-1) + lucas_number(n-2) 
 end
 
@@ -57,11 +56,7 @@ end
 # sum_array([5, 2])         # => 7
 # sum_array([4, 10, -1, 2]) # => 15
 def sum_array(array)
-    if array.length == 0
-        return 0
-    elsif array.length == 1
-        return array[0]
-    end        
+    return 0 if array.empty?
     array[-1] + sum_array(array[0...-1])
 end
 
@@ -114,22 +109,9 @@ end
 
 
 def flatten(data)
-    return data if data.is_a?(Array)
+    return [data] if !data.is_a?(Array)
 
-    flat_arr = []
-    flat_arr = flatten 
+    flattened = []
+    data.each { |el| flattened += flatten(el) } 
+    flattened
 end
-
-def test(n)
-    if n == 0
-        return 
-    end
-    test(n-1)
-    puts n
-end
-
-test(10)
-
-
-
-
