@@ -18,7 +18,7 @@ class Game
         until over?
             if !over?
                 play_turn(self.player_1) 
-                display
+                #display
             end
             if !over?
                 play_turn(self.player_2) if !over?
@@ -62,5 +62,5 @@ end
 
 human = Human_player.new('O')
 computer = Computer_player.new('X')
-tic_tac_toe = Game.new(computer, human)
+tic_tac_toe = Game.new(human, computer)
 tic_tac_toe.play

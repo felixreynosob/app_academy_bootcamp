@@ -97,5 +97,6 @@ class Board
         print("#{board[2][0]} | #{board[2][1]} | #{board[2][2]} \n")
         puts ('')
     end
+   
     
 end
