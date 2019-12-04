@@ -6,16 +6,17 @@ class Game
     attr_reader :dictionary, :players
     attr_writer :dictionary
 
-    def initialize(player_1, player_2)
-        @players = [player_1, player_2]
+    def initialize(*players)
+        @players = players
+        @losses = {}
+        @guessed_words = []
         @fragment = ""
         @dictionary = create_dictionary
-        @losses = {player_1=>0, player_2=>0}
+        self.players.each { |player| @losses[player.name] = 0 }
     end
 
 
     def play_round
-        
         loop do
             puts "Fragment: '#{@fragment}'"
             take_turn(current_player)
@@ -26,17 +27,19 @@ class Game
 
 
     def current_player
-        @players[0]                
+        @players[0]
+
     end
 
 
     def previous_player
-        @players[1]
+        @players[-1]
     end
 
 
     def next_player!
-        @players[0], @players[1] = @players[1], @players[0]
+        @players.push(players[0])
+        @players.shift
     end
 
 
@@ -53,7 +56,6 @@ class Game
         end
         
         @fragment += guess
-        @losses[previous_player] += 1 if @dictionary.has_key?(@fragment)  
     end
 
 
@@ -68,13 +70,24 @@ class Game
 
 
     def lost_round
-        @dictionary.has_key?(@fragment)
+        if @dictionary.has_key?(@fragment)
+            if @guessed_words.length == 0 
+                @losses[previous_player.name] += 1 
+                @guessed_words << @fragment
+                return true
+            elsif @guessed_words.length > 0 && !@guessed_words.include?(@fragment)
+                @losses[previous_player.name] += 1
+                @guessed_words << @fragment
+                return true
+            end
+        end
+        false
     end
 
 
     def record(player)
         ghost_record = ['G','H','O','S','T']
-        points = @losses[player]
+        points = @losses[player.name]
         if points > 0
             player.record[0...points] = ghost_record[0...points]
         end
@@ -82,12 +95,25 @@ class Game
 
 
     def run
-        while @losses.values.max < 5
-            display_standings
-            play_round
-            @fragment = ""
+        over = false 
+        until @players.length == 1
+            while @losses.values.max < 5
+                display_standings
+                play_round
+                @fragment = ""
+            end
+            if @losses.values.max == 5
+                player_who_lost = @losses.key(5)
+                @losses.tap { |hsh| hsh.delete(player_who_lost) }
+                @players.each do |player| 
+                    if player.name == player_who_lost
+                        @players.delete(player) 
+                        break
+                    end
+                end
+            end
         end
-        puts "#{@losses.key(5).name} losses, good luck next time"
+        puts "#{self.players[0].name} WINS!!!!"
     end
 
 
@@ -114,5 +140,8 @@ end
 
 player_1 = Player.new("felix")
 player_2 = Player.new("bot")
+player_3 = Player.new("mariel")
+player_4 = Player.new("tomas")
+
 ghost = Game.new(player_1, player_2)
 ghost.run
