@@ -10,7 +10,7 @@ class Player
 
     def guess
         puts "#{self.name} please enter a letter."
-        gets.chomp 
+        gets.chomp.downcase 
     end
     
    

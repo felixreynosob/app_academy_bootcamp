@@ -140,10 +140,12 @@ class Game
 end
 
 
-player_1 = Player.new("felix")
-player_2 = Player.new("bot")
-player_3 = Player.new("mariel")
-player_4 = Player.new("tomas")
+if __FILE__ == $PROGRAM_NAME
+    player_1 = Player.new("felix")
+    player_2 = Player.new("bot")
+    player_3 = Player.new("mariel")
+    player_4 = Player.new("tomas")
 
-ghost = Game.new(player_1, player_2)
-ghost.run
+    ghost = Game.new(player_1, player_2)
+    ghost.run
+end
