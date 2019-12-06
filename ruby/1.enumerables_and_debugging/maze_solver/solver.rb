@@ -1,6 +1,6 @@
 class Solver
 
-    attr_accessor :start, :found_winning_paths
+    attr_reader :start
 
     def initialize(maze)
         @maze = maze
@@ -21,8 +21,7 @@ class Solver
 
 
     def has_available_move?(position, current_path)
-        x = position[0]
-        y = position[1]
+        x, y = position 
         
         if (x-1) >= 0 
             return true if @maze[x-1][y] == "#" && !current_path.include?([x-1,y])     #UP
@@ -41,10 +40,8 @@ class Solver
 
 
     def get_next_moves(position, current_path)
-        moves = [] #array of available positions to play 
-        x = position[0]
-        y = position[1]
-        
+        moves = [] 
+        x, y = position        
         
         if (x-1) >= 0 
             moves << [x-1, y] if @maze[x-1][y] == '#' && !current_path.include?([x-1, y])   #UP
@@ -68,8 +65,7 @@ class Solver
 
 
     def reached_end?(position)
-        x = position[0]
-        y = position[1]
+        x, y = position 
         
         if (x-1) >= 0 
             return true if @maze[x-1][y] == :E   #UP
@@ -117,4 +113,9 @@ class Solver
         @found_winning_paths
     end
 
+end
+
+
+if __FILE__ == $PROGRAM_NAME
+    solver = Solver.new(Array.new(8) {Array.new(8, "#")})
 end

@@ -1,9 +1,9 @@
-require_relative 'solver.rb'
 require 'colorize'
+require_relative 'solver.rb'
 
 class Maze
 
-    attr_accessor :maze, :shortest_path, :all_paths
+    attr_reader :maze, :shortest_path, :all_paths
 
     def initialize
         @maze = Array.new(5) { Array.new(6, "#") }
@@ -39,11 +39,7 @@ class Maze
         @maze[3][3] = 'X'
         @maze[2][3] = 'X'
         @maze[1][3] = 'X'
-        # @maze[0][3] = 'X'
-        # @maze[0][4] = 'X'
         @maze[1][4] = 'X'
-        # @maze[0][5] = 'X'
-        # @maze[1][5] = 'X'
         @maze[3][5] = 'X'
         @maze[4][5] = 'X'
         @maze[4][0] = :S
@@ -51,13 +47,11 @@ class Maze
     end
 
 
-
-
     def solve
         solver = Solver.new(self.maze)
         solver.find_winning_paths(solver.start)
-        self.shortest_path = solver.get_shortest_path
-        self.all_paths = solver.get_all_paths
+        @shortest_path = solver.get_shortest_path
+        @all_paths = solver.get_all_paths
     end
 
 
@@ -66,22 +60,22 @@ class Maze
         self.solve
         print_maze
         sleep(5)
+        system("clear"); puts "Solution:\n\n"
         show_shortest_path 
     end
 
 
     def show_shortest_path 
        copy = @maze.dup
-       puts"\n\n\n\n\n\n"
        @shortest_path.each { |pos| copy[pos[0]][pos[1]] = 'M' }
        print_maze(copy,true)
     end
 
-
-
 end
 
 
-maze = Maze.new
-maze.run
+if __FILE__ == $PROGRAM_NAME
+    maze = Maze.new
+    maze.run
+end
 
