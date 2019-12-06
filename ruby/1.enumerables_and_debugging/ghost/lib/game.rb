@@ -102,6 +102,8 @@ class Game
                 play_round
                 @fragment = ""
             end
+            system('clear')
+            sleep(1)
             if @losses.values.max == 5
                 player_who_lost = @losses.key(5)
                 @losses.tap { |hsh| hsh.delete(player_who_lost) }
