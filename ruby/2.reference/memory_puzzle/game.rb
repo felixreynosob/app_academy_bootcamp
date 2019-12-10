@@ -27,36 +27,29 @@ class Game
 
     def render
         output = Array.new(5) { Array.new(5) }
+        output[0][0] = "@"
+        output[0][1..-1] = (0...output.length-1).to_a
+        (0..3).each { |i| output[i+1][0] = i }
         output[1..-1][1..-1] = @grid
-        output[0][1] = output[1][0] = 0
-        output[0][2] = output[2][0] = 1
-        output[0][3] = output[3][0] = 2
-        output[0][4] = output[4][0] = 3
-
-
-
+        
         (0...output.length).each do |i|
-            
             (0...output.length).each do |j|
-                card = @grid[i-1][j-1]
-                if i == 0 && j == 0
-                    print "  " 
-                elsif i > 0 && j == 0
-                    print i
-                elsif i == 0 && j > 0
-                    if j == 4 
-                        print j, "\n"
-                    else 
-                        print j
+                if i > 0 && j > 0
+                    card = @grid[i-1][j-1]
+                    if card.face_up == true  
+                        print card.value + " " 
+                    else
+                        print " " + " " 
                     end
-                end
-                
-                if card.face_up == true  
-                    print card.value + "  " 
                 else
-                    print " " 
-                end
-                
+                    if i == 0 && j == 0
+                        print "  "
+                    elsif i > 0 && j == 0
+                        print output[i][j]," "
+                    elsif i == 0 && j > 0
+                        print output[i][j], " "
+                    end
+                end             
             end
             print("\n")
         end
@@ -107,8 +100,3 @@ end
 
 puzzle = Game.new
 puzzle.play
-
-# T  E  Q  Z  
-# Y  Q  K  E  
-# W  C  Y  Z  
-# W  T  K  C  
