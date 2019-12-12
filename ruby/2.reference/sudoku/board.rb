@@ -1,14 +1,15 @@
 require_relative "tile.rb"
+require 'byebug'
 
 class Board
 
     attr_reader :board, :tile_conflicts
-    attr_writer :current_position, :board
+    attr_writer :current_position, :board, :tile_conflicts
 
     def initialize(grid) 
         @board = grid
         format(board)
-        @tile_conflicts = [[],[],[]]
+        @tile_conflicts = Array.new(3) { Array.new } #[[],[],[]]
     end
 
 
@@ -37,29 +38,34 @@ class Board
             tile.value = val
         else
             puts "That tile has been given to us and can't be updated"
+            sleep(2)
         end
     end
 
 
     def has_conflicts?(position)
         x, y = position
-        val = self.board[x][y].value
-        already_in_row?(position, val) 
-        already_in_column?(position, val)
-        already_in_region?(position, val)
-        @tile_conflicts != [[],[],[]] 
+        if board[x][y].value != '#'
+            val = board[x][y].value 
+            already_in_row?(position, val) 
+            already_in_column?(position, val)
+            already_in_region?(position, val)
+            @tile_conflicts != [[],[],[]] 
+        else
+            false
+        end
     end
 
 
     def already_in_row?(position, val)
         x, y = position
         (0...y).each do |col| 
-            if self.board[x][col].value == val
+            if board[x][col].value == val
                 @tile_conflicts[0] << [x, col]
             end
         end
-        ((y+1)...self.board.length).each do |col| 
-            if self.board[x][col].value == val
+        ((y+1)...board.length).each do |col| 
+            if board[x][col].value == val
                 @tile_conflicts[0] << [x, col]
             end
         end
@@ -71,12 +77,12 @@ class Board
     def already_in_column?(position, val)
         x, y = position
         (0...x).each do |row| 
-            if self.board[row][y].value == val
+            if board[row][y].value == val
                 @tile_conflicts[1] << [row, y]
             end
         end
-        ((x+1)...self.board.length).each do |row| 
-            if self.board[row][y].value == val
+        ((x+1)...board.length).each do |row| 
+            if board[row][y].value == val
                 @tile_conflicts[1] << [row, y]
             end
         end
@@ -92,7 +98,7 @@ class Board
         (i...(i+3)).each do |row|
             (j...(j+3)).each do |col|
                 next if  x == row && y == col #skips the given position to only evaluate unknown positions for given value
-                if self.board[row][col].value == val
+                if board[row][col].value == val
                     @tile_conflicts[2] << [row, col]
                 end
             end
@@ -127,20 +133,29 @@ class Board
     end
 
 
-    def highlight_conflicts
-        (0...self.board.length).each do |row|
-            (0...self.board.length).each do |col|
-                has_conflicts?([row, col])
+    def get_conflicts
+        (0...board.length).each do |row|
+            (0...board.length).each do |col|
+                board[row][col].in_conflict = false if !has_conflicts?([row, col])
             end
         end
-       p @tile_conflicts[0].uniq
+        highlight((tile_conflicts[0]+tile_conflicts[1]+tile_conflicts[2]).uniq)
+    end
+
+    
+    def highlight(arr)
+        arr.each do |pos|
+            x, y = pos
+            board[x][y].in_conflict = true
+        end
     end
 
 
     def solved?
+        return false if board.flatten.any? { |tile| tile.value == "#"}
         board.each_with_index do |row, i|
             row.each_with_index do |el, j|
-                return false if has_conflicts([i, j], el)
+                return false if (has_conflicts?([i, j])) #|| board[i][j].value != '#')
             end
         end
         true
@@ -148,8 +163,8 @@ class Board
 
 
     def render
-        highlight_conflicts 
-
+        get_conflicts   
+        
         (0...board.length).each do |i|
             puts "\n+---+---+---+---+---+---+---+---+---+".colorize(:yellow) if i == 0
             (0...board.length).each do |j|
@@ -162,12 +177,20 @@ class Board
                 
                 lastCol = "|".colorize(:yellow) if j == 8
                     
-                if board[i][j].given
-                    print "|".colorize(color) + " " + board[i][j].value.colorize(:blue), " " + lastCol
+                if board[i][j].given 
+                    if board[i][j].in_conflict
+                        print "|".colorize(color) + " " + board[i][j].value.colorize(:red), " " + lastCol
+                    else 
+                        print "|".colorize(color) + " " + board[i][j].value.colorize(:blue), " " + lastCol
+                    end
                 elsif board[i][j].value == '#'
                     print "|".colorize(color) +"   " + lastCol
                 else
-                    print "|".colorize(color) + " #{board[i][j].value} " + lastCol
+                    if board[i][j].in_conflict
+                        print "|".colorize(color) + " " + board[i][j].value.colorize(:red)+ " " + lastCol
+                    else
+                        print "|".colorize(color) + " #{board[i][j].value} " + lastCol
+                    end
                 end
 
             end
@@ -194,11 +217,18 @@ end
 
 if __FILE__ == $PROGRAM_NAME
     board = Board.from_file("input_files/test_conflicts.txt")
-    # board.update_tile([3,3],'F')
-    # board.update_tile([8,8],'F')
-    # p board.has_conflicts?([0,0],"1")
-    puts "\n"
-    # p board.board[0][1].value
-    board.render
+
+    while board.solved? == false
+        board.render
+        puts "please enter the desired coordinates with the format x,y"
+        x,y =  gets.chomp.split(",")
+        puts "now, please enter the value to insert int the board from 1 to 9"
+        val = gets.chomp
+        board.update_tile([x.to_i,y.to_i], val)
+        debugger
+        system('clear')
+        board.tile_conflicts = [[],[],[]]
+    end
     
+  
 end
