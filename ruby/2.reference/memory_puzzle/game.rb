@@ -44,9 +44,7 @@ class Game
                 else
                     if i == 0 && j == 0
                         print "  "
-                    elsif i > 0 && j == 0
-                        print output[i][j]," "
-                    elsif i == 0 && j > 0
+                    else
                         print output[i][j], " "
                     end
                 end             
