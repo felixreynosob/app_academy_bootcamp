@@ -1,6 +1,3 @@
-require 'byebug'
-
-
 def range_recursive(start, ending)
     return [] if ending <= start 
     [start] + range_recursive(start+1, ending)
@@ -71,7 +68,6 @@ def n_fibonacci_iterative(n)
     }
     arr.last
 end
-
 
 
 def bsearch(arr, target, min=0, max=arr.length-1)
