@@ -126,43 +126,42 @@ def subsets(given_arr)
 end
 
 
+def find_permutations(arr, nbr=0, idx=0)
+    idx = 0 if idx >= (arr.length-1)
 
+    return [] if nbr == (1..arr.size).inject { |acc, el| el * acc }
 
+    if nbr > 0
+        arr[idx], arr[idx+1] = arr[idx+1], arr[idx]
+        idx += 1
+    end
 
+    result = arr + [','] + find_permutations(arr.dup, nbr+1, idx)  #=> recursive step 
+end
+ 
 
+def permutations(arr)
+    result = find_permutations(arr)
+    perms = []
+    i = 0
 
+    while i <  result.size
+        if result[i] == ','
+            i += 1
+            next
+        end
+        j = i
+        
+        while j < result.size
+            if result[j] == ','
+                perms.push(result[i...j])
+                i = j-1 
+                break
+            end
+            j += 1
+        end
+        i += 1
+    end
 
-# Still have to work on this recursive function.
-
-# def permutations(arr, nbr=1, idx=0)
-#     idx = 0 if idx >= (arr.length-1)
-
-#     if nbr == (1..arr.length).inject { |acc, el| el * acc }
-#         # arr[idx], arr[idx+1] = arr[idx+1], arr[idx]
-#         return arr
-#     end
-
-#     if nbr > 1
-#         arr[idx], arr[idx+1] = arr[idx+1], arr[idx]
-#     end
-    
-#     shifted = permutations(arr.dup, nbr+1, idx+1)
-#     [arr] + [shifted]
-# end
-
-
-
-
-
-# debugger
-# p permutations([1, 2,3])
-
-# 1,2,3
-# 2,1,3
-# 2,3,1
-# 3,2,1
-# 3,1,2
-# 1,3,2
-
-
-
+    return perms
+end
