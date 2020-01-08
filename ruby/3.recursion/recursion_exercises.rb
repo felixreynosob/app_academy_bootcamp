@@ -92,10 +92,77 @@ def bsearch(arr, target, min=0, max=arr.length-1)
 end
 
 
-p bsearch([1, 2, 3], 1) # => 0
-p bsearch([2, 3, 4, 5], 3) # => 1
-p bsearch([2, 4, 6, 8, 10], 6) # => 2
-p bsearch([1, 3, 4, 5, 9], 5) # => 3
-p bsearch([1, 2, 3, 4, 5, 6], 6) # => 5
-p bsearch([1, 2, 3, 4, 5, 6], 0) # => nil
-p bsearch([1, 2, 3, 4, 5, 7], 6) # => nil
+def merge(arr_1, arr_2) 
+    merged = arr_1 + arr_2
+    sorted = false
+    
+    until sorted
+        sorted = true
+    
+        (0...merged.length-1).each do |j|
+            if !(merged[j] < merged[j+1])
+                merged[j], merged[j+1] = merged[j+1], merged[j]
+                sorted = false
+                break
+            end
+        end
+    end
+
+    merged
+end
+
+
+def merge_sort(arr)
+    return arr if (arr.empty?) || (arr.length <= 1)
+    mid_index = (arr.length-1) / 2
+    merge(merge_sort(arr[0..mid_index]), merge_sort(arr[mid_index+1..-1]))
+end
+
+
+def subsets(given_arr)
+    return [[]] if given_arr.empty?
+    old = subsets(given_arr[0...-1])
+    old + old.map { |sub| sub + [given_arr.last] }
+end
+
+
+
+
+
+
+
+
+# Still have to work on this recursive function.
+
+# def permutations(arr, nbr=1, idx=0)
+#     idx = 0 if idx >= (arr.length-1)
+
+#     if nbr == (1..arr.length).inject { |acc, el| el * acc }
+#         # arr[idx], arr[idx+1] = arr[idx+1], arr[idx]
+#         return arr
+#     end
+
+#     if nbr > 1
+#         arr[idx], arr[idx+1] = arr[idx+1], arr[idx]
+#     end
+    
+#     shifted = permutations(arr.dup, nbr+1, idx+1)
+#     [arr] + [shifted]
+# end
+
+
+
+
+
+# debugger
+# p permutations([1, 2,3])
+
+# 1,2,3
+# 2,1,3
+# 2,3,1
+# 3,2,1
+# 3,1,2
+# 1,3,2
+
+
+
