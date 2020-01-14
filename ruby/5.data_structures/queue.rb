@@ -1,3 +1,4 @@
+#Queue Class Implementation
 class Queue
     def initialize
         @ivar = []
