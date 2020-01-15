@@ -58,6 +58,6 @@ class PolyTreeNode
             el.children.each  { |child| queue.push(child) }
         end
 
-        nil
+        nil 
     end
 end
