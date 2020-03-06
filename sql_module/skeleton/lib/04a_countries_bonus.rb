@@ -31,7 +31,7 @@ def highest_gdp
 end
 
 
-#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 def largest_in_continent  
@@ -39,22 +39,22 @@ def largest_in_continent
   # name, and area.
   execute(<<-SQL)
     SELECT
-      continent, name, area
+      DISTINCT continent, name, area
     FROM
       countries
-    WHERE
+    WHERE 
       area IN (
-        SELECT 
+        SELECT
           MAX(area)
         FROM
           countries
-        GROUP BY 
+        GROUP BY
           continent
       )
   SQL
 end
 
-#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 #$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 def large_neighbors
@@ -62,16 +62,19 @@ def large_neighbors
   # neighbors (in the same continent). Give the countries and continents.
   execute(<<-SQL)
     SELECT 
-      name, continent
+      name, continent          
     FROM
-      countries
+      countries AS countries_A
     WHERE
-      name (
+      countries_A.population > ALL (
         SELECT
-          name
+          population * 3              
         FROM
-          countries
-        WHERE 
+          countries AS countries_B
+        WHERE
+          (countries_A.continent = countries_B.continent)
+          AND
+          (countries_A.name != countries_B.name)
       )
   SQL
 end
