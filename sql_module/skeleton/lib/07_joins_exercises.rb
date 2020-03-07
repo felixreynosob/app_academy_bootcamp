@@ -124,17 +124,64 @@ def travoltas_busiest_years
 end
 
 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 def andrews_films_and_leads
   # List the film title and the leading actor for all of the films 'Julie
   # Andrews' played in.
   execute(<<-SQL)
+    SELECT
+      movies.title, actors.name
+    FROM
+      movies
+    INNER JOIN castings
+      ON movies.id = castings.movie_id
+    INNER JOIN actors
+      ON castings.actor_id = actors.id
+    WHERE
+      ord = 1
+      AND
+      title IN (
+        SELECT
+          sub_movies.title
+        FROM 
+          movies AS sub_movies
+        INNER JOIN castings AS sub_castings
+          ON sub_movies.id = sub_castings.movie_id
+        INNER JOIN actors AS sub_actors
+          ON sub_castings.actor_id = sub_actors.id 
+        WHERE
+          name = 'Julie Andrews'
+      )
   SQL
 end
 
+
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 def prolific_actors
   # Obtain a list in alphabetical order of actors who've had at least 15
   # starring roles.
   execute(<<-SQL)
+    SELECT 
+      actors.name
+    FROM
+      actors
+    WHERE
+      14 < ( 
+        SELECT
+          COUNT(sub_castings.ord)
+        FROM 
+          castings AS sub_castings
+        INNER JOIN actors AS sub_actors
+          ON sub_castings.actor_id = sub_actors.id 
+        WHERE
+          actors.name = sub_actors.name  
+           AND
+          sub_castings.ord = 1
+      )
+    ORDER BY 
+      actors.name
   SQL
 end
 
