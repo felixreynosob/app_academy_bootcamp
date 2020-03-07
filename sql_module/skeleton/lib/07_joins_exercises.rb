@@ -185,15 +185,57 @@ def prolific_actors
   SQL
 end
 
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 def films_by_cast_size
   # List the films released in the year 1978 ordered by the number of actors
   # in the cast (descending), then by title (ascending).
   execute(<<-SQL)
+    SELECT
+      movies.title, COUNT(castings.actor_id)
+    FROM
+      movies
+    INNER JOIN castings
+      ON movies.id = castings.movie_id
+    INNER JOIN actors
+      ON castings.actor_id = actors.id
+    WHERE
+      movies.yr = 1978 AND actor_id IN (
+        SELECT
+          sub_actors.id
+        FROM
+          actors AS sub_actors
+        INNER JOIN castings AS sub_castings
+          ON sub_actors.id = sub_castings.actor_id
+        WHERE 
+          movies.id = sub_castings.movie_id 
+      )
+    GROUP BY 
+      movies.title
+    ORDER BY
+      COUNT(castings.actor_id) DESC, movies.title ASC
   SQL
 end
 
 def colleagues_of_garfunkel
   # List all the people who have played alongside 'Art Garfunkel'.
   execute(<<-SQL)
+    SELECT
+      actors.name
+    FROM
+      actors
+    INNER JOIN castings
+      ON actors.id = castings.actor_id 
+    WhERE 
+      actors.name <> 'Art Garfunkel' AND castings.movie_id IN (
+        SELECT
+          sub_castings.movie_id
+        FROM 
+          castings AS sub_castings
+        INNER JOIN actors AS sub_actors
+          ON  sub_castings.actor_id = sub_actors.id 
+        WHERE
+          sub_actors.name = 'Art Garfunkel'
+      )
   SQL
 end
