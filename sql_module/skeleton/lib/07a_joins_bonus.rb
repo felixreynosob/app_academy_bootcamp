@@ -114,6 +114,9 @@ def eponymous_albums
   SQL
 end
 
+
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 def song_title_counts
   # Select the song names that appear on more than two albums. Also select the
   # COUNT of times they show up.
@@ -121,26 +124,54 @@ def song_title_counts
   SQL
 end
 
+
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+#$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 def best_value
   # A "good value" album is one where the price per track is less than 50
   # pence. Find the good value albums - show the title, the price and the number
   # of tracks.
   execute(<<-SQL)
+    SELECT
+      title, price, COUNT(song)
+    FROM
+      albums
+    INNER JOIN tracks
+      ON albums.asin = tracks.album    
+    GROUP BY
+     title, price
+    HAVING
+     (price / COUNT(song)) < 0.5
   SQL
 end
+
 
 def top_track_counts
   # Wagner's Ring cycle has an imposing 173 tracks, Bing Crosby clocks up 101
   # tracks. List the top 10 albums. Select both the album title and the track
   # count, and order by both track count and title (descending).
   execute(<<-SQL)
+    SELECT
+      title, COUNT(song)
+    FROM
+      albums
+    INNER JOIN tracks
+      ON albums.asin = tracks.album
+    GROUP BY
+      title
+    ORDER BY
+      COUNT(song) DESC, title DESC
+    LIMIT 10
   SQL
 end
-
+ 
+# $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+# $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
 def rock_superstars
   # Select the artist who has recorded the most rock albums, as well as the
   # number of albums. HINT: use LIKE '%Rock%' in your query.
   execute(<<-SQL)
+    
   SQL
 end
 
@@ -153,5 +184,6 @@ def expensive_tastes
   # subquery. Next, JOIN the styles table to this result and use aggregates to
   # determine the average price per track.
   execute(<<-SQL)
+  
   SQL
 end
