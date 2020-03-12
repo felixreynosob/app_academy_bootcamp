@@ -1,6 +1,4 @@
--- PRAGMA foreign_keys = ON;
-
--- DROP DATABASE IF EXISTS questions;
+PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS users;
 DROP TABLE IF EXISTS questions;
@@ -24,6 +22,7 @@ CREATE TABLE questions (
 );
 
 CREATE TABLE question_follows (
+  id INTEGER PRIMARY KEY,
   question_id INTEGER NOT NULL,
   follower_id INTEGER NOT NULL,
 
@@ -34,21 +33,22 @@ CREATE TABLE question_follows (
 CREATE TABLE replies (
   id INTEGER PRIMARY KEY,
   body TEXT,
-  ref_question_id INTEGER NOT NULL,
+  question_id INTEGER NOT NULL,
   parent_id INTEGER NOT NULL, 
   author_id INTEGER NOT NULL,
 
-  FOREIGN KEY (ref_question_id) REFERENCES questions(id),
+  FOREIGN KEY (question_id) REFERENCES questions(id),
   FOREIGN KEY (parent_id) REFERENCES replies(id),
   FOREIGN KEY (author_id) REFERENCES users(id)
 );
 
 CREATE TABLE question_likes (
+  id INTEGER PRIMARY KEY,
   question_id INTEGER NOT NULL,
-  liked_by_user_id INTEGER NOT NULL,
+  user_id INTEGER NOT NULL,
 
   FOREIGN KEY (question_id) REFERENCES questions(id),
-  FOREIGN KEY (liked_by_user_id) REFERENCES users(id)
+  FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
 INSERT INTO
@@ -85,7 +85,7 @@ VALUES
   (7, 1);
 
 INSERT INTO
-  replies (body, ref_question_id, parent_id, author_id)
+  replies (body, question_id, parent_id, author_id)
 VALUES
   ("Sorry pal, division by 0 is not defined.", 1, 1, 6),
   ("Virtual and augmented reality are transforming architects design today.", 2, 1, 3),
@@ -93,7 +93,7 @@ VALUES
   ("I know the work you guys are doing at Social Glass and it is very inspiring.", 4, 1, 1);
 
 INSERT INTO
-  question_likes (question_id, liked_by_user_id)
+  question_likes (question_id, user_id)
 VALUES
   (1, 1),
   (2, 1),
