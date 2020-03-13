@@ -1,16 +1,14 @@
 PRAGMA foreign_keys = ON;
 
 DROP TABLE IF EXISTS users;
-DROP TABLE IF EXISTS questions;
-DROP TABLE IF EXISTS question_follows;
-DROP TABLE IF EXISTS replies;
-DROP TABLE IF EXISTS question_likes;
 
 CREATE TABLE users (
   id INTEGER PRIMARY KEY,
   fname TEXT NOT NULL,
   lname TEXT NOT NULL
 );
+
+DROP TABLE IF EXISTS questions;
 
 CREATE TABLE questions (
   id INTEGER PRIMARY KEY,
@@ -21,6 +19,8 @@ CREATE TABLE questions (
   FOREIGN KEY (author_id) REFERENCES users(id)
 );
 
+DROP TABLE IF EXISTS question_follows;
+
 CREATE TABLE question_follows (
   id INTEGER PRIMARY KEY,
   question_id INTEGER NOT NULL,
@@ -29,6 +29,8 @@ CREATE TABLE question_follows (
   FOREIGN KEY (question_id) REFERENCES questions(id),
   FOREIGN KEY (follower_id) REFERENCES users(id)
 );
+
+DROP TABLE IF EXISTS replies;
 
 CREATE TABLE replies (
   id INTEGER PRIMARY KEY,
@@ -41,6 +43,8 @@ CREATE TABLE replies (
   FOREIGN KEY (parent_id) REFERENCES replies(id),
   FOREIGN KEY (author_id) REFERENCES users(id)
 );
+
+DROP TABLE IF EXISTS question_likes;
 
 CREATE TABLE question_likes (
   id INTEGER PRIMARY KEY,
@@ -65,7 +69,7 @@ VALUES
 INSERT INTO
   questions (title, body, author_id)
 VALUES
-  ("Division by zero?", "Is it possible to divide a number by zero?  \nI haven't been able to find the answer", 1),
+  ("Division by zero?", "Is it possible to divide a number by zero? I haven't been able to find the answer", 1),
   ("What's next in architecture?", "Hi friends, i'm interested in learning what will be the best tech coming up in the arch field.", 2),
   ("Are we prepared for the next epidemic?", "Hi mi name is Bill and I want to raise awareness in the health sector. I Believe we're not ready to face a pandemic at a large scale", 3),
   ("Can entrepreneurs disrupt governments?", "Hi, I'm the CEO of the Social Glass, we're a startup that develops AI solutions to make governments mor efficient", 4),
