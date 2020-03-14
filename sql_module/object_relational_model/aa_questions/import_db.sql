@@ -92,9 +92,9 @@ INSERT INTO
   replies (body, question_id, parent_id, author_id)
 VALUES
   ("Sorry pal, division by 0 is not defined.", 1, 1, 6),
-  ("Virtual and augmented reality are transforming architects design today.", 2, 1, 3),
-  ("I'm sure we're not ready for the next pandemic. But I believe Apple and Microsoft together could work together on this.", 3, 1, 5),
-  ("I know the work you guys are doing at Social Glass and it is very inspiring.", 4, 1, 1);
+  ("Virtual and augmented reality are transforming architects design today.", 2, 2, 3),
+  ("I'm sure we're not ready for the next pandemic. But I believe Apple and Microsoft together could work together on this.", 3, 3, 5),
+  ("I know the work you guys are doing at Social Glass and it is very inspiring.", 4, 4, 1);
 
 INSERT INTO
   question_likes (question_id, user_id)

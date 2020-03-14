@@ -192,16 +192,18 @@ class Reply
         Reply.find_by_id(self.parent_id)
     end
 
-    def child_reply
+    def child_replies
         data = QuestionsDatabase.instance.execute(<<-SQL, self.id)
         SELECT
           *
         FROM 
           replies
         WHERE
-          parent_id = ?
+          replies.parent_id = ? 
+          AND replies.parent_id <> replies.id
         SQL
-        Question.new(data.first)
+        return nil if data.empty?
+        data.map { |datum| Reply.new(datum) }
     end
 end
 
