@@ -69,8 +69,9 @@ class Question
         FROM
           questions
         WHERE
-            id = ?
+          id = ?
         SQL
+        return nil if data.empty?
         Question.new(data.first)
     end
 
@@ -100,6 +101,21 @@ class Question
     def replies
         Reply.find_by_question_id(self.id)
     end
+
+    def followers
+        data = QuestionsDatabase.instance.execute(<<-SQL, self.id)
+        SELECT
+          users.id, users.fname, users.lname
+        FROM
+          users
+        INNER JOIN question_follows
+          ON question_follows.follower_id = users.id
+        WHERE
+          question_follows.question_id = ?
+        SQL
+        return nil if data.empty?
+        data.map { |datum| User.new(datum) }
+    end 
 end
 
 class Question_follow
@@ -116,6 +132,37 @@ class Question_follow
         SQL
         Question_follow.new(data.first)
     end
+
+    def self.followers_for_question_id(question_id)
+        data = QuestionsDatabase.instance.execute(<<-SQL, question_id)
+        SELECT
+          users.id, users.fname, users.lname
+        FROM
+          users
+        INNER JOIN question_follows
+          ON users.id = question_follows.follower_id    
+        WHERE
+          question_follows.question_id = ?
+        SQL
+        return nil if data.empty?
+        data.map { |datum| User.new(datum) }
+    end
+
+    def self.followers_for_user_id(user_id)
+        data = QuestionsDatabase.instance.execute(<<-SQL, user_id)
+        SELECT
+            questions.id, questions.title, questions.body, questions.author_id
+        FROM
+          questions
+        INNER JOIN question_follows
+          ON questions.id = question_follows.question_id    
+        WHERE
+          question_follows.follower_id = ?
+        SQL
+        return nil if data.empty?
+        data.map { |datum| Question.new(datum) }
+    end
+
 
     def initialize(options)
         @id = options['id']
