@@ -75,8 +75,8 @@ VALUES
   ("Can entrepreneurs disrupt governments?", "Hi, I'm the CEO of the Social Glass, we're a startup that develops AI solutions to make governments mor efficient", 4),
   ("What is design?", "Design is not only how it looks or how it works, in simple terms. 'Design is how it feels'.", 5),
   ("When will we get to mars?", "We will get a million people on Mars, by 2050.", 6),
-  ("What's the meaning behind VIRGIN?", "Decades ago we came up with the concept for the Virgin Brand, what we want is for people to be happy and reinventing themselves.", 7);
-
+  ("What's the meaning behind VIRGIN?", "Decades ago we came up with the concept for the Virgin Brand, what we want is for people to be happy and reinventing themselves.", 7),
+  ("Is graphene the material of the future?", "I've been obsessed over the last few years with graphene and all the futuristic properties it has. Can you believe it?", 2);
 INSERT INTO 
   question_follows (question_id, follower_id)
 VALUES
@@ -107,4 +107,6 @@ VALUES
   (3, 1),
   (4, 1),
   (5, 1),
-  (3, 7);
+  (3, 7),
+  (2, 4),
+  (2, 6);

@@ -69,10 +69,18 @@ class User
     def average_karma
         data = QuestionsDatabase.instance.execute(<<-SQL, self.id)
         SELECT
-          COUNT(questions.id)
+          COUNT(question_likes.user_id) /
+            CAST(COUNT(DISTINCT(questions.id)) AS FLOAT) 
+              AS avg_karma
+        FROM
+          questions
+        LEFT JOIN question_likes
+          ON questions.id = question_likes.question_id
+        WHERE
+          questions.author_id = ?
         SQL
-        data.first['avg_likes_for_user']
-       
+        return nil if data.empty?
+        data.first['avg_karma']
     end
 end
 
