@@ -82,6 +82,31 @@ class User
         return nil if data.empty?
         data.first['avg_karma']
     end
+
+    def save
+      return self.update if self.id
+      QuestionsDatabase.instance.execute(<<-SQL, self.fname, self.lname)    
+      INSERT INTO
+        users (fname, lname)
+      VALUES
+        (?, ?)
+      SQL
+      self.id = QuestionsDatabase.instance.last_insert_row_id
+      return self
+    end
+
+    def update 
+      raise "#{self} not in Database." unless self.id
+      QuestionsDatabase.instance.execute(<<-SQL, self.fname, self.lname, self.id)
+      UPDATE
+        users
+      SET
+        fname = ?, lname = ?
+      WHERE
+         id = ?
+      SQL
+      return self
+    end
 end
 
 class Question
@@ -120,6 +145,11 @@ class Question
         Question_like.most_liked_questions(n)
     end
 
+    def self.all
+      data = QuestionsDatabase.instance.execute("SELECT * FROM questions;")
+      data.map { |datum| Question.new(datum) }
+  end
+
     def initialize(options)
         @id = options['id']
         @title = options['title']
@@ -145,6 +175,31 @@ class Question
 
     def num_likes
         Question_like.num_likes_for_question_id(self.id)
+    end
+
+    def save
+      return self.update if self.id
+      QuestionsDatabase.instance.execute(<<-SQL, self.title, self.body, self.author_id)    
+      INSERT INTO
+        questions (title, body, author_id)
+      VALUES
+        (?, ?, ?)
+      SQL
+      self.id = QuestionsDatabase.instance.last_insert_row_id
+      return self
+    end
+
+    def update 
+      raise "#{self} not in Database." unless self.id
+      QuestionsDatabase.instance.execute(<<-SQL, self.title, self.body, self.author_id=self.author_id, self.id)
+      UPDATE
+        questions
+      SET
+        title = ?, body = ?, author_id = ?
+      WHERE
+         id = ?
+      SQL
+      return self
     end
 end
 
@@ -295,6 +350,31 @@ class Reply
         return nil if data.empty?
         data.map { |datum| Reply.new(datum) }
     end
+
+    def save
+      return self.update if self.id
+      QuestionsDatabase.instance.execute(<<-SQL, self.body, self.question_id, self.parent_id, self.author_id)    
+      INSERT INTO
+        replies (body, question_id, parent_id, author_id)
+      VALUES
+        (?, ?, ?, ?)
+      SQL
+      self.id = QuestionsDatabase.instance.last_insert_row_id
+      return self
+    end
+
+    def update 
+      raise "#{self} not in Database." unless self.id
+      QuestionsDatabase.instance.execute(<<-SQL, self.body, self.question_id,self.parent_id,  self.author_id=self.author_id, self.id)
+      UPDATE
+        replies
+      SET
+        title = ?, question_id = ?, parent_id = ?,  author_id = ?
+      WHERE
+         id = ?
+      SQL
+      return self
+    end
 end
 
 class Question_like
@@ -377,4 +457,3 @@ class Question_like
         @user_id = options['user_id']
     end
 end
-
