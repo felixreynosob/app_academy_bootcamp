@@ -1,8 +1,6 @@
 # require_relative 'questions_database'
-require_relative 'user'
-require_relative 'question'
-require_relative 'question_follow'
-require_relative 'question_like'
+# require_relative 'user'
+# require_relative 'question'
 require_relative 'model_base'
 
 class Reply < ModelBase
@@ -13,17 +11,17 @@ class Reply < ModelBase
         data.map { |datum| Reply.new(datum) }
     end
 
-    # def self.find_by_id(id)
-    #     data = QuestionsDatabase.instance.execute(<<-SQL, id)
-    #     SELECT
-    #       *
-    #     FROM
-    #       replies
-    #     WHERE
-    #       id = ?
-    #     SQL
-    #     Reply.new(data.first)
-    # end
+    def self.find_by_id(id)
+        data = QuestionsDatabase.instance.execute(<<-SQL, id)
+        SELECT
+          *
+        FROM
+          replies
+        WHERE
+          id = ?
+        SQL
+        Reply.new(data.first)
+    end
 
     def self.find_by_question_id(question_id)
         data = QuestionsDatabase.instance.execute(<<-SQL, question_id)
@@ -112,3 +110,4 @@ class Reply < ModelBase
       return self
     end
 end
+
