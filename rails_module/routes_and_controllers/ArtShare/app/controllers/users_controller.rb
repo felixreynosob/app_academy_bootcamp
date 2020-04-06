@@ -1,7 +1,12 @@
 class UsersController < ApplicationController
 
     def index 
-        render json: User.all
+        if params[:query]
+            render json: User.find_by(query_params)
+            # render json: params
+        else 
+            render json: User.all
+        end
     end 
 
     def create
@@ -31,6 +36,10 @@ class UsersController < ApplicationController
     end
 
     private
+
+    def query_params
+        params.require(:query).permit(:username, :id)
+    end
 
     def user_params
         params.require(:user).permit(:username)
