@@ -72,6 +72,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
+    colorize (0.8.1)
     concurrent-ruby (1.1.6)
     crass (1.0.6)
     erubi (1.9.0)
@@ -160,6 +161,9 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    shog (0.2.1)
+      colorize (>= 0.8)
+      rails (>= 4)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -209,6 +213,7 @@ DEPENDENCIES
   rails (~> 5.2.4, >= 5.2.4.2)
   sass-rails (~> 5.0)
   selenium-webdriver
+  shog
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

@@ -4458,3 +4458,46 @@ puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
 puma (3.12.4) lib/puma/server.rb:476:in `process_client'
 puma (3.12.4) lib/puma/server.rb:334:in `block in run'
 puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-04-08 09:40:20 -0400
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4.2/lib/rails/templates/rails/welcome/index.html.erb (3.0ms)
+Completed 200 OK in 21ms (Views: 12.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/artworks/" for ::1 at 2020-04-08 09:40:26 -0400
+Processing by ArtworksController#index as HTML
+  [1m[36mArtwork Load (2.0ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = NULL) OR (artwork_shares.viewer_id = NULL))[0m
+  ↳ app/controllers/artworks_controller.rb:3
+Completed 200 OK in 23ms (Views: 9.0ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/users/1/artworks/" for ::1 at 2020-04-08 09:42:56 -0400
+Processing by ArtworksController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mArtwork Load (3.1ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = '1') OR (artwork_shares.viewer_id = '1'))[0m
+  ↳ app/controllers/artworks_controller.rb:3
+Completed 200 OK in 23ms (Views: 12.8ms | ActiveRecord: 9.0ms)
+
+
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Started GET "/users/1/artworks/" for ::1 at 2020-04-08 09:51:06 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by ArtworksController#index as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mArtwork Load (2.5ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = '1') OR (artwork_shares.viewer_id = '1'))[0m
+  ↳ app/controllers/artworks_controller.rb:3
+Completed 200 OK in 45ms (Views: 22.0ms | ActiveRecord: 8.5ms)
+
+
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/1/artworks/" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-08 09:53:05 -0400[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[[1;30;49mDEBUG[0m]   ↳ /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mArtworksController#index[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"user_id"=>"1"}
+[[1;30;49mDEBUG[0m]   [1m[36mArtwork Load (2.4ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = '1') OR (artwork_shares.viewer_id = '1'))[0m
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/artworks_controller.rb:3
+[INFO ] Completed [0;32;49m200 OK[0m in 41ms [0;30;49m(Views: 18.9ms | ActiveRecord: 8.5ms)[0m
