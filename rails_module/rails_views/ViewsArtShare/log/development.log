@@ -4501,3 +4501,122 @@ Completed 200 OK in 45ms (Views: 22.0ms | ActiveRecord: 8.5ms)
 [[1;30;49mDEBUG[0m]   [1m[36mArtwork Load (2.4ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = '1') OR (artwork_shares.viewer_id = '1'))[0m
 [[1;30;49mDEBUG[0m]   ↳ app/controllers/artworks_controller.rb:3
 [INFO ] Completed [0;32;49m200 OK[0m in 41ms [0;30;49m(Views: 18.9ms | ActiveRecord: 8.5ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-08 14:41:38 -0400[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[[1;30;49mDEBUG[0m]   ↳ /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#index[0m as [0;33;49mHTML[0m
+[INFO ]   Rendering users/index.html.erb within layouts/application
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[[1;30;49mDEBUG[0m]   ↳ app/views/users/index.html.erb:7
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/index.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m15.4ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 205ms [0;30;49m(Views: 174.8ms | ActiveRecord: 7.6ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/instagram.com/tomasreynoso.jpg" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-08 14:41:38 -0400[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/instagram.com/fefita.jpg" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-08 14:41:38 -0400[0m
+[[0;37;41mFATAL[0m] [0;31;49mActionController::RoutingError (No route matches [GET] "/users/instagram.com/fefita.jpg"):[0m
+[[0;37;41mFATAL[0m] [0;31;49mactionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'[0m
+[[0;37;41mFATAL[0m] [0;31;49mActionController::RoutingError (No route matches [GET] "/users/instagram.com/tomasreynoso.jpg"):[0m
+[[0;37;41mFATAL[0m] [0;31;49mactionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/1" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-08 14:41:52 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"1"}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:27
+[INFO ]   Rendering users/show.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/show.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.4ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 31ms [0;30;49m(Views: 22.3ms | ActiveRecord: 1.3ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/1/edit" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-08 14:42:02 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#edit[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"1"}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:36
+[INFO ]   Rendering users/edit.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/edit.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.6ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 30ms [0;30;49m(Views: 27.2ms | ActiveRecord: 0.4ms)[0m
+[INFO ] [1;32;49mPATCH  [0m[1;37;49m "/users/1" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-08 14:42:11 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#update[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"user"=>{"username"=>"felixreynoso", "profile_picture_url"=>"https://scontent.fhex4-1.fna.fbcdn.net/v/t1.0-9/p960x960/74209257_1329888943872063_6598690584234295296_o.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=vWStj5oJMnMAX-6XNPb&_nc_ht=scontent.fhex4-1.fna&_nc_tp=6&oh=53afa97a068b5477ffd18dd963b71f40&oe=5EB28A17 "}, "id"=>"1"}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:41
+[[1;30;49mDEBUG[0m]   [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:42
+[[1;30;49mDEBUG[0m]   [1m[36mUser Exists (1.0ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "felixreynoso"], ["id", 1], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:42
+[[1;30;49mDEBUG[0m]   [1m[36mUser Update (2.2ms)[0m  [1m[33mUPDATE "users" SET "username" = $1, "profile_picture_url" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["username", "felixreynoso"], ["profile_picture_url", "https://scontent.fhex4-1.fna.fbcdn.net/v/t1.0-9/p960x960/74209257_1329888943872063_6598690584234295296_o.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=vWStj5oJMnMAX-6XNPb&_nc_ht=scontent.fhex4-1.fna&_nc_tp=6&oh=53afa97a068b5477ffd18dd963b71f40&oe=5EB28A17 "], ["updated_at", "2020-04-08 18:42:11.829610"], ["id", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:42
+[[1;30;49mDEBUG[0m]   [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:42
+[INFO ] Redirected to http://localhost:3000/users/1
+[INFO ] Completed [0;32;49m302 Found[0m in 30ms [0;30;49m(ActiveRecord: 4.9ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/1" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-08 14:42:11 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"1"}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:27
+[INFO ]   Rendering users/show.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/show.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.3ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 26ms [0;30;49m(Views: 23.3ms | ActiveRecord: 0.6ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/1/edit" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-08 14:42:21 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#edit[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"1"}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:36
+[INFO ]   Rendering users/edit.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/edit.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.5ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 31ms [0;30;49m(Views: 28.0ms | ActiveRecord: 0.4ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/artworks/" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-08 14:43:24 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mArtworksController#index[0m as [0;33;49mHTML[0m
+[[1;30;49mDEBUG[0m]   [1m[36mArtwork Load (2.0ms)[0m  [1m[34mSELECT DISTINCT "artworks".* FROM "artworks" LEFT OUTER JOIN "artwork_shares" ON "artwork_shares"."artwork_id" = "artworks"."id" WHERE ((artworks.artist_id = NULL) OR (artwork_shares.viewer_id = NULL))[0m
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/artworks_controller.rb:3
+[INFO ] Completed [0;32;49m200 OK[0m in 24ms [0;30;49m(Views: 9.3ms | ActiveRecord: 6.3ms)[0m
