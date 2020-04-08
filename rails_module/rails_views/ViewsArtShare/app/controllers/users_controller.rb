@@ -32,13 +32,18 @@ class UsersController < ApplicationController
         end
     end
 
+    def edit
+        @user = User.find_by(id: params[:id])
+        render :edit
+    end
+
     def update 
-        user = User.find(params[:id])
-        if user.update(user_params)
-            render json: user
+        @user = User.find(params[:id])
+        if @user.update_attributes(user_params)
+            redirect_to user_url(@user)
         else
-            render json: useer.errors.full_messages, status: :unprocessable_entity
-        end
+            render :edit
+        end         
     end
 
     def destroy

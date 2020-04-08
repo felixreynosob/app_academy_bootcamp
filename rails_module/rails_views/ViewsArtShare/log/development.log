@@ -2978,3 +2978,1483 @@ puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
 puma (3.12.4) lib/puma/server.rb:476:in `process_client'
 puma (3.12.4) lib/puma/server.rb:334:in `block in run'
 puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "TomasReynoso"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.7ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "profile_picture_url") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "TomasReynoso"], ["created_at", "2020-04-07 18:53:23.302245"], ["updated_at", "2020-04-07 18:53:23.302245"], ["profile_picture_url", "instagram.com/tomasreynoso.jpg"]]
+  [1m[35m (2.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "tomasreynoso"], ["id", 14], ["LIMIT", 1]]
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "username" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["username", "tomasreynoso"], ["updated_at", "2020-04-07 18:55:21.585780"], ["id", 14]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started GET "/users/" for ::1 at 2020-04-07 15:08:30 -0400
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 8ms (Views: 3.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/" for ::1 at 2020-04-07 15:08:39 -0400
+Processing by UsersController#index as */*
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UrlGenerationError (No route matches {:action=>"show", :controller=>"users"}, missing required keys: [:id]):
+  
+app/controllers/users_controller.rb:4:in `index'
+Started GET "/users/" for ::1 at 2020-04-07 15:09:17 -0400
+Processing by UsersController#index as */*
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for ::1 at 2020-04-07 15:09:21 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for ::1 at 2020-04-07 15:10:34 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for ::1 at 2020-04-07 15:10:39 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for ::1 at 2020-04-07 15:11:18 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 20ms (Views: 0.5ms | ActiveRecord: 7.5ms)
+
+
+Started GET "/users/1" for ::1 at 2020-04-07 15:11:37 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 16ms (Views: 0.5ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/users/1" for ::1 at 2020-04-07 15:11:43 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:28
+  Rendering text template
+  Rendered text template (0.0ms)
+Completed 200 OK in 17ms (Views: 0.6ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/users/1" for ::1 at 2020-04-07 15:14:21 -0400
+Processing by UsersController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 277ms (Views: 261.7ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/users/1/edit" for ::1 at 2020-04-07 15:26:16 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users/1/edit"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/1/edit" for ::1 at 2020-04-07 15:27:50 -0400
+Processing by UsersController#edit as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 94ms (Views: 71.4ms | ActiveRecord: 10.4ms)
+
+
+Started GET "/users/1/edit" for ::1 at 2020-04-07 15:37:59 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 26ms (Views: 23.9ms | ActiveRecord: 0.6ms)
+
+
+Started PATCH "/users/1/edit" for ::1 at 2020-04-07 15:38:03 -0400
+  
+ActionController::RoutingError (No route matches [PATCH] "/users/1/edit"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PATCH "/users/1/edit" for ::1 at 2020-04-07 15:42:51 -0400
+  
+ActionController::RoutingError (No route matches [PATCH] "/users/1/edit"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PATCH "/users/1/edit" for ::1 at 2020-04-07 15:42:57 -0400
+  
+ActionController::RoutingError (No route matches [PATCH] "/users/1/edit"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-04-07 15:43:01 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4.2/lib/rails/templates/rails/welcome/index.html.erb (2.0ms)
+Completed 200 OK in 10ms (Views: 6.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/1" for ::1 at 2020-04-07 15:43:08 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 43ms (Views: 21.8ms | ActiveRecord: 11.7ms)
+
+
+Started GET "/users/1/edit" for ::1 at 2020-04-07 15:43:29 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 26ms (Views: 23.8ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/users/1/edit" for ::1 at 2020-04-07 15:43:32 -0400
+  
+ActionController::RoutingError (No route matches [PATCH] "/users/1/edit"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started PATCH "/users/1/edit" for ::1 at 2020-04-07 15:49:04 -0400
+  
+ActionController::RoutingError (No route matches [PATCH] "/users/1/edit"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/1" for ::1 at 2020-04-07 15:49:10 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 43ms (Views: 27.2ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/users/3" for ::1 at 2020-04-07 15:49:16 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 23ms (Views: 21.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/3/edit" for ::1 at 2020-04-07 15:49:19 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 22ms (Views: 20.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/3/edit?_method=PATCH&user%5Busername%5D=madielciprian&user%5Bprofile_picture_url%5D=https%3A%2F%2Fscontent.fhex4-1.fna.fbcdn.net%2Fv%2Ft1.0-9%2F90219297_10156586827975882_391622363659108352_n.jpg%3F_nc_cat%3D101%26_nc_sid%3D85a577%26_nc_ohc%3DWy_-rgU8EPcAX9SpEUV%26_nc_ht%3Dscontent.fhex4-1.fna%26oh%3Ddd7c64b14d9724a57fe616e5d38622a7%26oe%3D5EB2EF25" for ::1 at 2020-04-07 15:49:28 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"madielciprian", "profile_picture_url"=>"https://scontent.fhex4-1.fna.fbcdn.net/v/t1.0-9/90219297_10156586827975882_391622363659108352_n.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=Wy_-rgU8EPcAX9SpEUV&_nc_ht=scontent.fhex4-1.fna&oh=dd7c64b14d9724a57fe616e5d38622a7&oe=5EB2EF25"}, "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 23ms (Views: 21.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/3/edit?_method=PATCH&user%5Busername%5D=marielcip&user%5Bprofile_picture_url%5D=https%3A%2F%2Fscontent.fhex4-1.fna.fbcdn.net%2Fv%2Ft1.0-9%2F90219297_10156586827975882_391622363659108352_n.jpg%3F_nc_cat%3D101%26_nc_sid%3D85a577%26_nc_ohc%3DWy_-rgU8EPcAX9SpEUV%26_nc_ht%3Dscontent.fhex4-1.fna%26oh%3Ddd7c64b14d9724a57fe616e5d38622a7%26oe%3D5EB2EF25" for ::1 at 2020-04-07 15:50:07 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"marielcip", "profile_picture_url"=>"https://scontent.fhex4-1.fna.fbcdn.net/v/t1.0-9/90219297_10156586827975882_391622363659108352_n.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=Wy_-rgU8EPcAX9SpEUV&_nc_ht=scontent.fhex4-1.fna&oh=dd7c64b14d9724a57fe616e5d38622a7&oe=5EB2EF25"}, "id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 22ms (Views: 20.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/3/edit?_method=PATCH&user%5Busername%5D=marielciprian&user%5Bprofile_picture_url%5D=https%3A%2F%2Fscontent.fhex4-1.fna.fbcdn.net%2Fv%2Ft1.0-9%2F90219297_10156586827975882_391622363659108352_n.jpg%3F_nc_cat%3D101%26_nc_sid%3D85a577%26_nc_ohc%3DWy_-rgU8EPcAX9SpEUV%26_nc_ht%3Dscontent.fhex4-1.fna%26oh%3Ddd7c64b14d9724a57fe616e5d38622a7%26oe%3D5EB2EF25" for ::1 at 2020-04-07 15:52:35 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"marielciprian", "profile_picture_url"=>"https://scontent.fhex4-1.fna.fbcdn.net/v/t1.0-9/90219297_10156586827975882_391622363659108352_n.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=Wy_-rgU8EPcAX9SpEUV&_nc_ht=scontent.fhex4-1.fna&oh=dd7c64b14d9724a57fe616e5d38622a7&oe=5EB2EF25"}, "id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 24ms (Views: 22.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/3/edit?_method=PATCH&user%5Busername%5D=marielciprian&user%5Bprofile_picture_url%5D=https%3A%2F%2Fscontent.fhex4-1.fna.fbcdn.net%2Fv%2Ft1.0-9%2F90219297_10156586827975882_391622363659108352_n.jpg%3F_nc_cat%3D101%26_nc_sid%3D85a577%26_nc_ohc%3DWy_-rgU8EPcAX9SpEUV%26_nc_ht%3Dscontent.fhex4-1.fna%26oh%3Ddd7c64b14d9724a57fe616e5d38622a7%26oe%3D5EB2EF25" for ::1 at 2020-04-07 15:52:37 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"marielciprian", "profile_picture_url"=>"https://scontent.fhex4-1.fna.fbcdn.net/v/t1.0-9/90219297_10156586827975882_391622363659108352_n.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=Wy_-rgU8EPcAX9SpEUV&_nc_ht=scontent.fhex4-1.fna&oh=dd7c64b14d9724a57fe616e5d38622a7&oe=5EB2EF25"}, "id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 21ms (Views: 20.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/3/edit?_method=PATCH&user%5Busername%5D=marielciprian&user%5Bprofile_picture_url%5D=https%3A%2F%2Fscontent.fhex4-1.fna.fbcdn.net%2Fv%2Ft1.0-9%2F90219297_10156586827975882_391622363659108352_n.jpg%3F_nc_cat%3D101%26_nc_sid%3D85a577%26_nc_ohc%3DWy_-rgU8EPcAX9SpEUV%26_nc_ht%3Dscontent.fhex4-1.fna%26oh%3Ddd7c64b14d9724a57fe616e5d38622a7%26oe%3D5EB2EF25" for ::1 at 2020-04-07 15:52:37 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"marielciprian", "profile_picture_url"=>"https://scontent.fhex4-1.fna.fbcdn.net/v/t1.0-9/90219297_10156586827975882_391622363659108352_n.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=Wy_-rgU8EPcAX9SpEUV&_nc_ht=scontent.fhex4-1.fna&oh=dd7c64b14d9724a57fe616e5d38622a7&oe=5EB2EF25"}, "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 23ms (Views: 21.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/3/edit?_method=PATCH&user%5Busername%5D=marielciprian&user%5Bprofile_picture_url%5D=https%3A%2F%2Fscontent.fhex4-1.fna.fbcdn.net%2Fv%2Ft1.0-9%2F90219297_10156586827975882_391622363659108352_n.jpg%3F_nc_cat%3D101%26_nc_sid%3D85a577%26_nc_ohc%3DWy_-rgU8EPcAX9SpEUV%26_nc_ht%3Dscontent.fhex4-1.fna%26oh%3Ddd7c64b14d9724a57fe616e5d38622a7%26oe%3D5EB2EF25" for ::1 at 2020-04-07 15:52:37 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"marielciprian", "profile_picture_url"=>"https://scontent.fhex4-1.fna.fbcdn.net/v/t1.0-9/90219297_10156586827975882_391622363659108352_n.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=Wy_-rgU8EPcAX9SpEUV&_nc_ht=scontent.fhex4-1.fna&oh=dd7c64b14d9724a57fe616e5d38622a7&oe=5EB2EF25"}, "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 21ms (Views: 19.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/3/edit?_method=PATCH&user%5Busername%5D=marielciprian&user%5Bprofile_picture_url%5D=https%3A%2F%2Fscontent.fhex4-1.fna.fbcdn.net%2Fv%2Ft1.0-9%2F90219297_10156586827975882_391622363659108352_n.jpg%3F_nc_cat%3D101%26_nc_sid%3D85a577%26_nc_ohc%3DWy_-rgU8EPcAX9SpEUV%26_nc_ht%3Dscontent.fhex4-1.fna%26oh%3Ddd7c64b14d9724a57fe616e5d38622a7%26oe%3D5EB2EF25" for ::1 at 2020-04-07 15:52:38 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"marielciprian", "profile_picture_url"=>"https://scontent.fhex4-1.fna.fbcdn.net/v/t1.0-9/90219297_10156586827975882_391622363659108352_n.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=Wy_-rgU8EPcAX9SpEUV&_nc_ht=scontent.fhex4-1.fna&oh=dd7c64b14d9724a57fe616e5d38622a7&oe=5EB2EF25"}, "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 22ms (Views: 21.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/3/edit?_method=PATCH&user%5Busername%5D=marielciprian&user%5Bprofile_picture_url%5D=https%3A%2F%2Fscontent.fhex4-1.fna.fbcdn.net%2Fv%2Ft1.0-9%2F90219297_10156586827975882_391622363659108352_n.jpg%3F_nc_cat%3D101%26_nc_sid%3D85a577%26_nc_ohc%3DWy_-rgU8EPcAX9SpEUV%26_nc_ht%3Dscontent.fhex4-1.fna%26oh%3Ddd7c64b14d9724a57fe616e5d38622a7%26oe%3D5EB2EF25" for ::1 at 2020-04-07 15:53:41 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"marielciprian", "profile_picture_url"=>"https://scontent.fhex4-1.fna.fbcdn.net/v/t1.0-9/90219297_10156586827975882_391622363659108352_n.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=Wy_-rgU8EPcAX9SpEUV&_nc_ht=scontent.fhex4-1.fna&oh=dd7c64b14d9724a57fe616e5d38622a7&oe=5EB2EF25"}, "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 24ms (Views: 22.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/3/edit?_method=PATCH&user%5Busername%5D=marielciprian" for ::1 at 2020-04-07 15:53:42 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"marielciprian"}, "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 30ms (Views: 28.9ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/3/edit?_method=PATCH&user%5Busername%5D=marielciprian" for ::1 at 2020-04-07 15:53:43 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"marielciprian"}, "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/" for ::1 at 2020-04-07 15:54:39 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:7
+  Rendered users/index.html.erb within layouts/application (24.7ms)
+Completed 200 OK in 195ms (Views: 173.6ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/users/u.profile_picture_url" for ::1 at 2020-04-07 15:54:39 -0400
+Processing by UsersController#show as 
+  Parameters: {"id"=>"u"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+Redirected to http://localhost:3000/users
+Completed 302 Found in 5ms (ActiveRecord: 1.0ms)
+
+
+Started GET "/users" for ::1 at 2020-04-07 15:54:39 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:7
+  Rendered users/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 26ms (Views: 25.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/3" for ::1 at 2020-04-07 15:54:50 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 21ms (Views: 19.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/3/edit" for ::1 at 2020-04-07 15:54:55 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 21ms (Views: 19.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/3/edit?_method=PATCH&user%5Busername%5D=marielcipria&user%5Bprofile_picture_url%5D=https%3A%2F%2Fscontent.fhex4-1.fna.fbcdn.net%2Fv%2Ft1.0-9%2F90219297_10156586827975882_391622363659108352_n.jpg%3F_nc_cat%3D101%26_nc_sid%3D85a577%26_nc_ohc%3DWy_-rgU8EPcAX9SpEUV%26_nc_ht%3Dscontent.fhex4-1.fna%26oh%3Ddd7c64b14d9724a57fe616e5d38622a7%26oe%3D5EB2EF25" for ::1 at 2020-04-07 15:55:12 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"marielcipria", "profile_picture_url"=>"https://scontent.fhex4-1.fna.fbcdn.net/v/t1.0-9/90219297_10156586827975882_391622363659108352_n.jpg?_nc_cat=101&_nc_sid=85a577&_nc_ohc=Wy_-rgU8EPcAX9SpEUV&_nc_ht=scontent.fhex4-1.fna&oh=dd7c64b14d9724a57fe616e5d38622a7&oe=5EB2EF25"}, "id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/new" for ::1 at 2020-04-07 15:56:47 -0400
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 21ms (Views: 20.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2020-04-07 15:57:05 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"user"=>{"username"=>"fefitalagrande", "profile_picture_url"=>"instagram.com/fefita.jpg"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:19
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "fefitalagrande"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:19
+  [1m[36mUser Create (0.5ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at", "profile_picture_url") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "fefitalagrande"], ["created_at", "2020-04-07 19:57:05.707036"], ["updated_at", "2020-04-07 19:57:05.707036"], ["profile_picture_url", "instagram.com/fefita.jpg"]]
+  ↳ app/controllers/users_controller.rb:19
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:19
+Redirected to http://localhost:3000/users/15
+Completed 302 Found in 5ms (ActiveRecord: 1.6ms)
+
+
+Started GET "/users/15" for ::1 at 2020-04-07 15:57:05 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 21ms (Views: 19.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/" for ::1 at 2020-04-07 15:57:19 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:7
+  Rendered users/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 22ms (Views: 20.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/u.profile_picture_url" for ::1 at 2020-04-07 15:57:19 -0400
+Processing by UsersController#show as 
+  Parameters: {"id"=>"u"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+Redirected to http://localhost:3000/users
+Completed 302 Found in 3ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/users" for ::1 at 2020-04-07 15:57:19 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:7
+  Rendered users/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 26ms (Views: 24.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/14" for ::1 at 2020-04-07 15:58:55 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"14"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 14], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 24ms (Views: 22.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/15" for ::1 at 2020-04-07 15:58:58 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 39ms (Views: 37.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 15:59:01 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 23ms (Views: 21.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/15/edit?_method=PATCH&user%5Busername%5D=fefitalarica&user%5Bprofile_picture_url%5D=instagram.com%2Ffefita.jpg" for ::1 at 2020-04-07 15:59:12 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"fefitalarica", "profile_picture_url"=>"instagram.com/fefita.jpg"}, "id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 23ms (Views: 22.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/15/edit?_method=PATCH&user%5Busername%5D=fefitalagrand&user%5Bprofile_picture_url%5D=instagram.com%2Ffefita.jpg" for ::1 at 2020-04-07 15:59:57 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"fefitalagrand", "profile_picture_url"=>"instagram.com/fefita.jpg"}, "id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 41ms (Views: 23.5ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/users/15/edit?_method=PATCH&user%5Busername%5D=fefitalagrand&user%5Bprofile_picture_url%5D=instagram.com%2Ffefita.jpg" for ::1 at 2020-04-07 16:00:06 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"fefitalagrand", "profile_picture_url"=>"instagram.com/fefita.jpg"}, "id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 43ms (Views: 24.0ms | ActiveRecord: 7.2ms)
+
+
+Started GET "/users/15/edit?_method=PATCH&user%5Busername%5D=fefitalagrand&user%5Bprofile_picture_url%5D=instagram.com%2Ffefita.jpg" for ::1 at 2020-04-07 16:00:07 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"fefitalagrand", "profile_picture_url"=>"instagram.com/fefita.jpg"}, "id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 27ms (Views: 25.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/" for ::1 at 2020-04-07 16:00:12 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:7
+  Rendered users/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 29ms (Views: 27.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/u.profile_picture_url" for ::1 at 2020-04-07 16:00:12 -0400
+Processing by UsersController#show as 
+  Parameters: {"id"=>"u"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 0], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+Redirected to http://localhost:3000/users
+Completed 302 Found in 3ms (ActiveRecord: 0.4ms)
+
+
+Started GET "/users" for ::1 at 2020-04-07 16:00:12 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:7
+  Rendered users/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 39ms (Views: 38.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/15" for ::1 at 2020-04-07 16:00:15 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/15/15" for ::1 at 2020-04-07 16:00:20 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users/15/15"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/15/" for ::1 at 2020-04-07 16:00:23 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 21ms (Views: 20.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:00:28 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 22ms (Views: 20.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/15/edit?_method=PATCH&user%5Busername%5D=fefitalagrandwww&user%5Bprofile_picture_url%5D=instagram.com%2Ffefita.jpg" for ::1 at 2020-04-07 16:00:32 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"fefitalagrandwww", "profile_picture_url"=>"instagram.com/fefita.jpg"}, "id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 23ms (Views: 21.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/15/edit?_method=PATCH&user%5Busername%5D=fefitalagrandwww&user%5Bprofile_picture_url%5D=instagram.com%2Ffefita.jpg" for ::1 at 2020-04-07 16:00:45 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"fefitalagrandwww", "profile_picture_url"=>"instagram.com/fefita.jpg"}, "id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 38ms (Views: 22.7ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/users/15/edit?_method=PATCH&user%5Busername%5D=fefitalagrande&user%5Bprofile_picture_url%5D=instagram.com%2Ffefita.jpg" for ::1 at 2020-04-07 16:00:47 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"fefitalagrande", "profile_picture_url"=>"instagram.com/fefita.jpg"}, "id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 24ms (Views: 22.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/15/edit?_method=PATCH&user%5Busername%5D=fefitalagrande&user%5Bprofile_picture_url%5D=instagram.com%2Ffefita.jpg" for ::1 at 2020-04-07 16:01:01 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"fefitalagrande", "profile_picture_url"=>"instagram.com/fefita.jpg"}, "id"=>"15"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:37
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 12133ms (Views: 28.5ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/users/15/edit?_method=PATCH&user%5Busername%5D=fefitalagrandess&user%5Bprofile_picture_url%5D=instagram.com%2Ffefita.jpg" for ::1 at 2020-04-07 16:01:22 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"fefitalagrandess", "profile_picture_url"=>"instagram.com/fefita.jpg"}, "id"=>"15"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 116915ms (Views: 35.7ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/users/15/edit?_method=PATCH&user%5Busername%5D=fefitalagrandess&user%5Bprofile_picture_url%5D=instagram.com%2Ffefita.jpg" for ::1 at 2020-04-07 16:04:53 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"fefitalagrandess", "profile_picture_url"=>"instagram.com/fefita.jpg"}, "id"=>"15"}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 195ms (Views: 154.5ms | ActiveRecord: 7.4ms)
+
+
+Started GET "/users/15/edit?_method=PATCH&user%5Busername%5D=laviejafefa&user%5Bprofile_picture_url%5D=instagram.com%2Ffefita.jpg" for ::1 at 2020-04-07 16:05:06 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"laviejafefa", "profile_picture_url"=>"instagram.com/fefita.jpg"}, "id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 24ms (Views: 22.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2020-04-07 16:05:14 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/railties-5.2.4.2/lib/rails/templates/rails/welcome/index.html.erb (2.3ms)
+Completed 200 OK in 10ms (Views: 6.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/users/15/" for ::1 at 2020-04-07 16:05:21 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 40ms (Views: 38.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:05:25 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 23ms (Views: 21.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/15/edit?_method=PATCH&user%5Busername%5D=laviejafefa&user%5Bprofile_picture_url%5D=instagram.com%2Ffefita.jpg" for ::1 at 2020-04-07 16:05:40 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"user"=>{"username"=>"laviejafefa", "profile_picture_url"=>"instagram.com/fefita.jpg"}, "id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 53ms (Views: 36.4ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/users/15/" for ::1 at 2020-04-07 16:22:59 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 61ms (Views: 35.0ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:23:10 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (115.2ms)
+Completed 500 Internal Server Error in 126ms (ActiveRecord: 0.5ms)
+
+
+  
+ActionView::Template::Error (undefined method `book_url' for #<#<Class:0x00007f854532d698>:0x00007f85444d1068>):
+    1: <h2>Edit user on the database</h2>
+    2: 
+    3: 
+    4: <form action="<%= book_url(@user) %>" method="post">
+    5:     <input type="hidden" name="_method" value="PATCH">
+    6:     <label for="username">Username</label>
+    7:     <input id="username" type="text" name="user[username]" value="<%= @user.username %> ">
+  
+app/views/users/edit.html.erb:4:in `_app_views_users_edit_html_erb___2273507606700510662_70105176628680'
+app/controllers/users_controller.rb:37:in `edit'
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:24:10 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (100.1ms)
+Completed 500 Internal Server Error in 111ms (ActiveRecord: 0.4ms)
+
+
+  
+ActionView::Template::Error (undefined method `book_url' for #<#<Class:0x00007f854532d698>:0x00007f853fea1d18>):
+    1: <h2>Edit user on the database</h2>
+    2: 
+    3: 
+    4: <form action="<%= book_url(@user.id) %>" method="post">
+    5:     <input type="hidden" name="_method" value="PATCH">
+    6:     <label for="username">Username</label>
+    7:     <input id="username" type="text" name="user[username]" value="<%= @user.username %> ">
+  
+app/views/users/edit.html.erb:4:in `_app_views_users_edit_html_erb___2273507606700510662_70105127417080'
+app/controllers/users_controller.rb:37:in `edit'
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:25:18 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 32ms (Views: 30.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/15" for ::1 at 2020-04-07 16:27:29 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 36ms (Views: 20.6ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:27:32 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+Completed 500 Internal Server Error in 60ms (ActiveRecord: 0.4ms)
+
+
+  
+NoMethodError (undefined method `user_ur' for #<UsersController:0x00007f8545181128>
+Did you mean?  user_url
+               users_url):
+  
+app/controllers/users_controller.rb:37:in `edit'
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:27:47 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 37ms (Views: 20.9ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:28:51 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 42ms (Views: 27.3ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:29:05 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 64ms (Views: 38.9ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:29:06 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 33ms (Views: 30.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/15" for ::1 at 2020-04-07 16:29:13 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:29:17 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 22ms (Views: 20.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:29:41 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 41ms (Views: 26.1ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/users/15/" for ::1 at 2020-04-07 16:29:58 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 34ms (Views: 19.4ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:30:00 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 24ms (Views: 22.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:31:12 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 35ms (Views: 20.3ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:31:36 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 20ms (Views: 18.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:31:54 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 20ms (Views: 18.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:32:40 -0400
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 21ms (Views: 19.0ms | ActiveRecord: 0.3ms)
+
+
+Started PATCH "/users/15" for ::1 at 2020-04-07 16:33:10 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"username"=>"laviejafefa", "profile_picture_url"=>"instagram.com/fefita.jpg "}, "id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42
+Completed 500 Internal Server Error in 98611ms (ActiveRecord: 0.2ms)
+
+
+  
+NoMethodError (undefined method `update_atributes' for #<User:0x00007f8546873778>
+Did you mean?  update_attributes
+               update_attributes!
+               update_attribute):
+  
+app/controllers/users_controller.rb:49:in `update'
+Started GET "/users/15/edit" for ::1 at 2020-04-07 16:37:17 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:36
+  Rendering users/edit.html.erb within layouts/application
+  Rendered users/edit.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 162ms (Views: 128.4ms | ActiveRecord: 6.8ms)
+
+
+Started PATCH "/users/15" for ::1 at 2020-04-07 16:37:24 -0400
+Processing by UsersController#update as HTML
+  Parameters: {"user"=>{"username"=>"laviejafefa", "profile_picture_url"=>"instagram.com/fefita.jpg "}, "id"=>"15"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:41
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:42
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "laviejafefa"], ["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:42
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "username" = $1, "profile_picture_url" = $2, "updated_at" = $3 WHERE "users"."id" = $4[0m  [["username", "laviejafefa"], ["profile_picture_url", "instagram.com/fefita.jpg "], ["updated_at", "2020-04-07 20:37:24.522581"], ["id", 15]]
+  ↳ app/controllers/users_controller.rb:42
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:42
+Redirected to http://localhost:3000/users/15
+Completed 302 Found in 7ms (ActiveRecord: 1.8ms)
+
+
+Started GET "/users/15" for ::1 at 2020-04-07 16:37:24 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 22ms (Views: 20.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users" for ::1 at 2020-04-07 16:37:30 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:7
+  Rendered users/index.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 23ms (Views: 22.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/u.profile_picture_url" for ::1 at 2020-04-07 16:37:30 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/u.profile_picture_url"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users" for ::1 at 2020-04-07 16:50:21 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected '<'
+....append=( @user.username <br> <img src=u.profile_picture_url...
+...                              ^
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+...g src=u.profile_picture_url alt="Profile Picture" height=42 ...
+...                            ^~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+...rl alt="Profile Picture" height=42 width=42 > );@output_buff...
+...                         ^~~~~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+...rofile Picture" height=42 width=42 > );@output_buffer.safe_a...
+...                          ^~~~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected ')'
+...Picture" height=42 width=42 > );@output_buffer.safe_append='...
+...                              ^
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:5: syntax error, unexpected keyword_else, expecting ')'
+'.freeze;     else 
+              ^~~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:10: syntax error, unexpected keyword_end, expecting ')'
+     end 
+     ^~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:13: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+          ^~~~~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/users/index.html.erb:4: syntax error, unexpected '<'
+app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/users/index.html.erb:4: syntax error, unexpected ')'
+app/views/users/index.html.erb:5: syntax error, unexpected keyword_else, expecting ')'
+app/views/users/index.html.erb:10: syntax error, unexpected keyword_end, expecting ')'
+app/views/users/index.html.erb:13: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/users/index.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+app/controllers/users_controller.rb:9:in `index'
+Started GET "/users" for ::1 at 2020-04-07 16:50:53 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (0.8ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected '<'
+....append=( @user.username <br> <img src=@user.profile_picture...
+...                              ^
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+...c=@user.profile_picture_url alt="Profile Picture" height=42 ...
+...                            ^~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+...rl alt="Profile Picture" height=42 width=42 > );@output_buff...
+...                         ^~~~~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+...rofile Picture" height=42 width=42 > );@output_buffer.safe_a...
+...                          ^~~~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected ')'
+...Picture" height=42 width=42 > );@output_buffer.safe_append='...
+...                              ^
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:5: syntax error, unexpected keyword_else, expecting ')'
+'.freeze;     else 
+              ^~~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:10: syntax error, unexpected keyword_end, expecting ')'
+     end 
+     ^~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:13: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+          ^~~~~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/users/index.html.erb:4: syntax error, unexpected '<'
+app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/users/index.html.erb:4: syntax error, unexpected ')'
+app/views/users/index.html.erb:5: syntax error, unexpected keyword_else, expecting ')'
+app/views/users/index.html.erb:10: syntax error, unexpected keyword_end, expecting ')'
+app/views/users/index.html.erb:13: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/users/index.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+app/controllers/users_controller.rb:9:in `index'
+Started GET "/users" for ::1 at 2020-04-07 16:51:03 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (0.6ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+...pend=( @user.username  <img src=@user.profile_picture_url al...
+...                            ^~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+...rl alt="Profile Picture" height=42 width=42 > );@output_buff...
+...                         ^~~~~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+...rofile Picture" height=42 width=42 > );@output_buffer.safe_a...
+...                          ^~~~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:4: syntax error, unexpected ')'
+...Picture" height=42 width=42 > );@output_buffer.safe_append='...
+...                              ^
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:5: syntax error, unexpected keyword_else, expecting ')'
+'.freeze;     else 
+              ^~~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:10: syntax error, unexpected keyword_end, expecting ')'
+     end 
+     ^~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:13: syntax error, unexpected keyword_ensure, expecting ')'
+          ensure
+          ^~~~~~
+/Users/engfelixreynoso/Desktop/felixU/courses/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_views/ViewsArtShare/app/views/users/index.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+          end
+          ^~~):
+  
+app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting keyword_do or '{' or '('
+app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/users/index.html.erb:4: syntax error, unexpected tIDENTIFIER, expecting ')'
+app/views/users/index.html.erb:4: syntax error, unexpected ')'
+app/views/users/index.html.erb:5: syntax error, unexpected keyword_else, expecting ')'
+app/views/users/index.html.erb:10: syntax error, unexpected keyword_end, expecting ')'
+app/views/users/index.html.erb:13: syntax error, unexpected keyword_ensure, expecting ')'
+app/views/users/index.html.erb:15: syntax error, unexpected keyword_end, expecting ')'
+app/controllers/users_controller.rb:9:in `index'
+Started GET "/users" for ::1 at 2020-04-07 16:53:07 -0400
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/views/users/index.html.erb:7
+  Rendered users/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 25ms (Views: 23.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/instagram.com/fefita.jpg" for ::1 at 2020-04-07 16:53:07 -0400
+Started GET "/instagram.com/tomasreynoso.jpg" for ::1 at 2020-04-07 16:53:07 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/instagram.com/tomasreynoso.jpg"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+  
+ActionController::RoutingError (No route matches [GET] "/instagram.com/fefita.jpg"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/users/3" for ::1 at 2020-04-07 16:53:17 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 23ms (Views: 20.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/3?query={username=felixreynosob}" for ::1 at 2020-04-07 16:54:58 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"query"=>"{username=felixreynosob}", "id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 23ms (Views: 21.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users?query={username=felixreynosob}" for ::1 at 2020-04-07 16:55:11 -0400
+Processing by UsersController#index as HTML
+  Parameters: {"query"=>"{username=felixreynosob}"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `permit' for "{username=felixreynosob}":String):
+  
+app/controllers/users_controller.rb:56:in `query_params'
+app/controllers/users_controller.rb:5:in `index'
+Started GET "/users/" for ::1 at 2020-04-07 16:55:37 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>{"id"=>"1"}, "user"=>{}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 85ms (Views: 82.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/" for ::1 at 2020-04-07 16:55:49 -0400
+Processing by UsersController#index as */*
+  Parameters: {"query"=>{"id"=>"1"}, "user"=>{}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:5
+  Rendering users/index.html.erb within layouts/application
+  Rendered users/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 74ms (Views: 72.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for ::1 at 2020-04-07 16:55:58 -0400
+Processing by UsersController#show as */*
+  Parameters: {"query"=>{"id"=>"1"}, "id"=>"1", "user"=>{}}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 85ms (Views: 82.2ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/1" for ::1 at 2020-04-07 16:58:07 -0400
+Processing by UsersController#show as */*
+  Parameters: {"query"=>{"id"=>"1"}, "id"=>"1", "user"=>{}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 76ms (Views: 73.6ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/15" for ::1 at 2020-04-07 16:58:53 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"15"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:27
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/instagram.com/fefita.jpg" for ::1 at 2020-04-07 16:58:53 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/users/instagram.com/fefita.jpg"):
+  
+actionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'

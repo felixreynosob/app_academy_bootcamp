@@ -1,11 +1,11 @@
 <ul>
     <% if @user %>
         <h2>Search results:</h2>
-        <li><%= @user.username %></li>
+        <li><%= @user.username%> <br> <img src=<%=@user.profile_picture_url%> alt="Profile Picture" height=42 width=42 > </li>
     <% else %>
         <h2>List of all the users:</h2>
         <%  @users.each do |u|   %>
-        <li><%= u.username %> <img src=u.profile_picture_url alt="Profile Picture" height=42 width=42 ></li>
+        <li><%= u.username %> <br> <img src=<%=u.profile_picture_url%> alt="Profile Picture" height=42 width=42 ></li>
         <% end  %>
     <% end %>
 </ul>

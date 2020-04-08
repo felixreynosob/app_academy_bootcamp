@@ -1,0 +1,12 @@
+<h2>Edit user on the database</h2>
+
+<form action="<%= user_url(@user) %>" method="post">
+    <input type="hidden" name="_method" value="PATCH">
+    <label for="username">Username</label>
+    <input id="username" type="text" name="user[username]" value="<%= @user.username %> ">
+
+    <label for="profile_picture_url">Profile Picture</label>
+    <input id="profile_picture_url" type="text" name="user[profile_picture_url]" value="<%= @user.profile_picture_url %> ">
+
+    <input type="submit" value="Update User">
+</form>
