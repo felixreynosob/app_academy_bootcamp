@@ -1,0 +1,35 @@
+<h1>Here you can edit the data for <%= @cat.name %> the cat.</h1>
+
+
+<form class="" action="<%= cat_url(@cat) %>" method="post">
+
+  <label for="name">Name</label>
+  <input id="name" type="text" name="cat[name]" value=<%= @cat.name %>>
+  <br>
+  <label for="birth_date">Birth Date</label>
+  <input id="birth_date" type="date" name="cat[birth_date]" value=<%= @cat.birth_date.to_s[0...10] %>>
+  <br>
+  <label for="color">Color</label>
+  <select id="color" name="cat[color]">
+    <option disabled <%= @cat.color ? "" : "selected" %> >-- Please Select --</option>
+    <% Cat.colors.each do |color| %>
+      <option value="<%= color %>" <%= @cat.color == color ? "selected" : "" %>><%= color %> </option>
+    <% end %>
+  </select>
+  <br>
+  Gender
+  <br>
+  <label for="sex_male">Male</label>
+  <input id="sex_male" type="radio" name="cat[sex]" value="m" <%= @cat.sex.downcase == 'm'? "checked" : ""  %>>
+  <br>
+  <label for="sex_female">Female</label>
+  <input id="sex_female" type="radio" name="cat[sex]" value="f" <%= @cat.sex.downcase == 'f'? "checked" : ""  %>>
+  <br>
+  <label for="picture_url">Picture Url</label>
+  <input id="picture_url" type="text" name="cat[picture_url]" value=<%= @cat.picture_url %>>
+  <br>
+  <label for="description">Description</label> <br>
+  <textarea id='description' name="cat[description]" rows="8" cols="50" value=<%= @cat.description %>></textarea>
+  <br>
+  <input type="submit" value="Submit">
+</form>
