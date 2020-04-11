@@ -1,7 +1,8 @@
 <h1>Please fill out the form to create a new Cat profile.</h1>
 
+<%= render 'form', action: :new, cat: @cat %>
 
-<form class="" action="<%= cats_url %>" method="post">
+<!-- <form class="" action="<%#= cats_url %>" method="post">
   <label for="name">Name</label>
   <input id="name" type="text" name="cat[name]" value="">
   <br>
@@ -11,9 +12,9 @@
   <label for="color">Color</label>
   <select id="color" name="cat[color]">
     <option disabled >-- Please Select --</option>
-    <% Cat.colors.each do |color| %>
-      <option value="<%= color %>"><%= color %></option>
-    <% end %>
+    <%# Cat.colors.each do |color| %>
+      <option value="<%#= color %>"><%#= color %></option>
+    <%# end %>
   </select>
   <br>
   Gender
@@ -31,4 +32,4 @@
   <textarea id='description' name="cat[description]" rows="8" cols="50"></textarea>
   <br>
   <input type="submit" value="Submit">
-</form>
+</form> -->
