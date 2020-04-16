@@ -1,0 +1,11 @@
+<h1>Here is a list of all the cats for rent</h1>
+<ul>
+    <% @cats.each do |cat| %>
+    <li style="padding:8px;">
+
+      Name: <%= cat.name %>  &mdash;
+      <a href="<%=cat_url(cat.id) %>">View Cat</a>
+      <br>
+    </li>
+    <% end %>
+</ul>

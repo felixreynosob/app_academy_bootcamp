@@ -1,0 +1,587 @@
+[[1;30;49mDEBUG[0m]   [1m[35m (168.6ms)[0m  [1m[35mCREATE DATABASE "Auth_App_development" ENCODING = 'unicode'[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (66.4ms)[0m  [1m[35mCREATE DATABASE "Auth_App_test" ENCODING = 'unicode'[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (11.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7120386813554913990)[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[INFO ] Migrating to CreateUsers (20200414220235)
+[[1;30;49mDEBUG[0m]   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (5.1ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying NOT NULL, "password_digest" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+[[1;30;49mDEBUG[0m]   ↳ db/migrate/20200414220235_create_users.rb:3
+[[1;30;49mDEBUG[0m]   [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_username" ON "users"  ("username")[0m
+[[1;30;49mDEBUG[0m]   ↳ db/migrate/20200414220235_create_users.rb:9
+[[1;30;49mDEBUG[0m]   [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200414220235"]]
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-04-14 22:05:57.297791"], ["updated_at", "2020-04-14 22:05:57.297791"]]
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7120386813554913990)[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "felixreynosob"], ["password_digest", "$2a$12$dU1gIXH3yZYEr1qczI5TnOBsSPWFprSBXhB5nSn62sCay3yyIQDP."], ["created_at", "2020-04-14 22:11:32.815398"], ["updated_at", "2020-04-14 22:11:32.815398"]]
+[[1;30;49mDEBUG[0m]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$12$2HX.nzcBNL2.lQorX24znOd30uv.yfE149AHmDCB7mauTEmlQXl6y"], ["updated_at", "2020-04-14 22:29:40.216473"], ["id", 1]]
+[[1;30;49mDEBUG[0m]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "password_digest" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["password_digest", "$2a$12$ODSzVS/SP8v95prVNkTq9.19rLuz.6hWhvRC3cLEFf7ySIyb6TRxS"], ["updated_at", "2020-04-14 22:42:59.322089"], ["id", 1]]
+[[1;30;49mDEBUG[0m]   [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (2.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Create (3.1ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "paolasantana"], ["password_digest", "$2a$12$yL7HAKljNRCXACQI.KrsL.0waDBJxO1piN9OFi9NoPN5J.dOhK7Wq"], ["created_at", "2020-04-16 12:40:32.729406"], ["updated_at", "2020-04-16 12:40:32.729406"]]
+[[1;30;49mDEBUG[0m]   [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Create (2.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "marielciprian"], ["password_digest", "$2a$12$ARrt/0gVt7X1VLMeEYPvVu71kZkpWwYHQtYNAI/BHBKz.nC6zgsr."], ["created_at", "2020-04-16 13:44:26.645711"], ["updated_at", "2020-04-16 13:44:26.645711"]]
+[[1;30;49mDEBUG[0m]   [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 10:11:56 -0400[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[[1;30;49mDEBUG[0m]   ↳ /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+[[0;37;41mFATAL[0m] [0;31;49m
+AbstractController::ActionNotFound - The action 'index' could not be found for UsersController:
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/16001f98b8aca51e/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 10:11:56 -0400[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/new" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 10:12:16 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#new[0m as [0;33;49mHTML[0m
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 39ms [0;30;49m(ActiveRecord: 6.2ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+ActionView::MissingTemplate - Missing template users/new, application/new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/engfelixreynoso/Desktop/felixU/courses_current/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_auth/Auth_App/app/views"
+:
+  app/controllers/users_controller.rb:5:in `new'
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/630c9c9eeaf56d49/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 10:12:17 -0400[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/new" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 10:13:03 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#new[0m as [0;33;49mHTML[0m
+[INFO ]   Rendering users/new.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/new.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m21.1ms[0m
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 33ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+ActionView::MissingTemplate - Missing partial users/_form, application/_form with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/engfelixreynoso/Desktop/felixU/courses_current/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_auth/Auth_App/app/views"
+:
+  app/views/users/new.html.erb:3:in `_app_views_users_new_html_erb__1744051715319786165_70183271172120'
+  app/controllers/users_controller.rb:5:in `new'
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/913390dc37196488/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 10:13:04 -0400[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/new" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 10:13:16 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#new[0m as [0;33;49mHTML[0m
+[INFO ]   Rendering users/new.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/_form.html.erb[0m [0;30;49m0.9ms[0m
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/new.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m6.0ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in [0;33;49m295ms[0m [0;30;49m(Views: 294.1ms | ActiveRecord: 0.0ms)[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+[[1;30;49mDEBUG[0m]   [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/users" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 10:14:55 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#create[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"qko/o3Hrfd0UI2dMFkoJQJruFbvBV2uBo6VHjFEVvfPcTdq2TGKwquooFrQRZttNAVCJU0ExZsPYwG08PNfupw==", "user"=>{"username"=>"marielciprian", "password"=>"[FILTERED]"}}
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:10
+[[1;30;49mDEBUG[0m]   [1m[36mUser Create (1.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "marielciprian"], ["password_digest", "$2a$12$ymS0Wjc3IUF94PUCdtmSfONQGMIYT/iNYFccETOuYHvLZuZJYr0zm"], ["created_at", "2020-04-16 14:14:55.632081"], ["updated_at", "2020-04-16 14:14:55.632081"]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:10
+[[1;30;49mDEBUG[0m]   [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:10
+[INFO ] Completed [0;32;49m200 OK[0m in [0;33;49m266ms[0m [0;30;49m(Views: 0.6ms | ActiveRecord: 2.4ms)[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.5ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7120386813554913990)[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[INFO ] Migrating to AddSessionTokenToUsers (20200416143844)
+[[1;30;49mDEBUG[0m]   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (5.6ms)[0m  [1m[35mALTER TABLE "users" ADD "session_token" character varying NOT NULL[0m
+[[1;30;49mDEBUG[0m]   ↳ db/migrate/20200416143844_add_session_token_to_users.rb:3
+[[1;30;49mDEBUG[0m]   [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7120386813554913990)[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[36mUser Destroy (1.0ms)[0m  [1m[31mDELETE FROM "users"[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(7120386813554913990)[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[INFO ] Migrating to AddSessionTokenToUsers (20200416143844)
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (1.9ms)[0m  [1m[35mALTER TABLE "users" ADD "session_token" character varying NOT NULL[0m
+[[1;30;49mDEBUG[0m]   ↳ db/migrate/20200416143844_add_session_token_to_users.rb:3
+[[1;30;49mDEBUG[0m]   [1m[35m (2.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_session_token" ON "users"  ("session_token")[0m
+[[1;30;49mDEBUG[0m]   ↳ db/migrate/20200416143844_add_session_token_to_users.rb:4
+[[1;30;49mDEBUG[0m]   [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200416143844"]]
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(7120386813554913990)[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[[1;30;49mDEBUG[0m]   [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[[1;30;49mDEBUG[0m]   ↳ bin/rails:9
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:09:06 -0400[0m
+[[1;30;49mDEBUG[0m]   [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[[1;30;49mDEBUG[0m]   ↳ /Users/engfelixreynoso/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/activerecord-5.2.4.2/lib/active_record/log_subscriber.rb:98
+[[0;37;41mFATAL[0m] [0;31;49m
+AbstractController::ActionNotFound - The action 'index' could not be found for UsersController:
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/e2825243f997cbe7/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:09:06 -0400[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/new" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:09:09 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#new[0m as [0;33;49mHTML[0m
+[INFO ]   Rendering users/new.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/_form.html.erb[0m [0;30;49m0.5ms[0m
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/new.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m4.6ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 44ms [0;30;49m(Views: 27.9ms | ActiveRecord: 8.3ms)[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/users" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:09:29 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#create[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"qxtwYbhJWkAi3gZH1KcF3s66t4dmMi7Ni6X8dZqmYEzdHJV0hcCXN9zVd7/Ti9fTVQQrb+ZUI4/wwNbF92QzGA==", "user"=>{"username"=>"felixreynosob", "password"=>"[FILTERED]"}}
+[[1;30;49mDEBUG[0m]   [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:10
+[[1;30;49mDEBUG[0m]   [1m[36mUser Create (2.6ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at", "session_token") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["username", "felixreynosob"], ["password_digest", "$2a$12$msdwtrUoJSXlgVEWkUCcwO0vlK5H7KvOeTap659DIk4HK2oAskMge"], ["created_at", "2020-04-16 15:09:30.100445"], ["updated_at", "2020-04-16 15:09:30.100445"], ["session_token", "lcYyNqvhp-NuMvfVuXiupw"]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:10
+[[1;30;49mDEBUG[0m]   [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:10
+[INFO ] Redirected to http://localhost:3000/users/5
+[INFO ] Completed [0;32;49m302 Found[0m in [0;33;49m268ms[0m [0;30;49m(ActiveRecord: 3.3ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/5" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:09:30 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"5"}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:19
+[INFO ]   Rendering users/show.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/show.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.3ms[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lcYyNqvhp-NuMvfVuXiupw"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/application_controller.rb:16
+[INFO ] Completed [0;32;49m200 OK[0m in 30ms [0;30;49m(Views: 25.0ms | ActiveRecord: 0.9ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:11:23 -0400[0m
+[[0;37;41mFATAL[0m] [0;31;49mActionController::RoutingError (No route matches [GET] "/session"):[0m
+[[0;37;41mFATAL[0m] [0;31;49mactionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/session/new" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:11:28 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#new[0m as [0;33;49mHTML[0m
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 7ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+ActionView::MissingTemplate - Missing template sessions/new, application/new with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/engfelixreynoso/Desktop/felixU/courses_current/engineering/4.full_stack_web_dev/app_academy_bootcamp/rails_module/rails_auth/Auth_App/app/views"
+:
+  app/controllers/sessions_controller.rb:4:in `new'
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/4f99eae7c47bed14/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:11:28 -0400[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/session/new" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:15:42 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#new[0m as [0;33;49mHTML[0m
+[INFO ]   Rendering sessions/new.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49msessions/new.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.4ms[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lcYyNqvhp-NuMvfVuXiupw"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/application_controller.rb:20
+[INFO ] Completed [0;32;49m200 OK[0m in 48ms [0;30;49m(Views: 41.7ms | ActiveRecord: 5.5ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/session/new" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:15:54 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#new[0m as [0;33;49mHTML[0m
+[INFO ]   Rendering sessions/new.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49msessions/new.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.6ms[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lcYyNqvhp-NuMvfVuXiupw"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/application_controller.rb:20
+[INFO ] Completed [0;32;49m200 OK[0m in 43ms [0;30;49m(Views: 42.2ms | ActiveRecord: 0.4ms)[0m
+[INFO ] [1;32;49mDELETE [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:16:00 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#destroy[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"syp8sYNkY/7r410wLhtXEU5GTU7Hx3Mumj3dBpu4vePFLZmkvu2uiRXoLMgpN4Uc1fjRpkehfmzhWPe29nrutw=="}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lcYyNqvhp-NuMvfVuXiupw"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/application_controller.rb:20
+[INFO ] Redirected to http://localhost:3000/session/new
+[INFO ] Completed [0;32;49m302 Found[0m in 4ms [0;30;49m(ActiveRecord: 0.4ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/session/new" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:16:00 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#new[0m as [0;33;49mHTML[0m
+[INFO ]   Rendering sessions/new.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49msessions/new.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.5ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 26ms [0;30;49m(Views: 25.4ms | ActiveRecord: 0.0ms)[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:16:08 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#create[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"ctl8+PsDpfMWUUYXptyShxEEoAQTplL7Nsk4zXtvTM4E3pntxopohOhaN++h8ECKiro87JPAX7lNrBJ9Fq0fmg==", "user"=>{"username"=>"felixreynosob", "password"=>"[FILTERED]"}}
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 1ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+ArgumentError - wrong number of arguments (given 1, expected 2):
+  app/models/user.rb:11:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:8:in `create'
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/06e21a997e26579b/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:16:08 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:18:07 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#create[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"ctl8+PsDpfMWUUYXptyShxEEoAQTplL7Nsk4zXtvTM4E3pntxopohOhaN++h8ECKiro87JPAX7lNrBJ9Fq0fmg==", "user"=>{"username"=>"felixreynosob", "password"=>"[FILTERED]"}}
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 3ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+LocalJumpError - no block given (yield):
+  app/controllers/sessions_controller.rb:8:in `create'
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/df43de381a8b0537/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:18:07 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/df43de381a8b0537/eval" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:18:10 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:19:22 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#create[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"ctl8+PsDpfMWUUYXptyShxEEoAQTplL7Nsk4zXtvTM4E3pntxopohOhaN++h8ECKiro87JPAX7lNrBJ9Fq0fmg==", "user"=>{"username"=>"felixreynosob", "password"=>"[FILTERED]"}}
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 1ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+LocalJumpError - no block given (yield):
+  app/controllers/sessions_controller.rb:8:in `create'
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/5ed0a3eade031262/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:19:22 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:19:33 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#create[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"ctl8+PsDpfMWUUYXptyShxEEoAQTplL7Nsk4zXtvTM4E3pntxopohOhaN++h8ECKiro87JPAX7lNrBJ9Fq0fmg==", "user"=>{"username"=>"felixreynosob", "password"=>"[FILTERED]"}}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "felixreynosob"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/models/user.rb:12
+[INFO ] Redirected to http://localhost:3000/users/5
+[INFO ] Completed [0;32;49m302 Found[0m in [0;33;49m275ms[0m [0;30;49m(ActiveRecord: 5.6ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/5" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:19:33 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"5"}
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 94ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+NoMethodError - undefined method `require_current_user' for #<UsersController:0x00007fa9a81759b8>
+Did you mean?  require_current_user!:
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/e2dd7e4a340784b5/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:19:34 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/e2dd7e4a340784b5/eval" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:19:56 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:20:24 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#create[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"ctl8+PsDpfMWUUYXptyShxEEoAQTplL7Nsk4zXtvTM4E3pntxopohOhaN++h8ECKiro87JPAX7lNrBJ9Fq0fmg==", "user"=>{"username"=>"felixreynosob", "password"=>"[FILTERED]"}}
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 54ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+LocalJumpError - no block given (yield):
+  app/models/user.rb:12:in `find_by_credentials'
+  app/controllers/sessions_controller.rb:8:in `create'
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/8d598cde9154c53c/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:20:25 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/8d598cde9154c53c/eval" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:20:30 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/8d598cde9154c53c/eval" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:20:33 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/8d598cde9154c53c/eval" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:20:45 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/8d598cde9154c53c/eval" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:20:52 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/8d598cde9154c53c/eval" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:20:56 -0400[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "felixreynosob"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/models/user.rb:12
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/8d598cde9154c53c/eval" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:21:11 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/8d598cde9154c53c/eval" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:21:27 -0400[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "felixreynosob"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/models/user.rb:12
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/8d598cde9154c53c/eval" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:21:32 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:22:17 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#create[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"ctl8+PsDpfMWUUYXptyShxEEoAQTplL7Nsk4zXtvTM4E3pntxopohOhaN++h8ECKiro87JPAX7lNrBJ9Fq0fmg==", "user"=>{"username"=>"felixreynosob", "password"=>"[FILTERED]"}}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "felixreynosob"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/models/user.rb:12
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in [0;33;49m279ms[0m [0;30;49m(ActiveRecord: 5.1ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+LocalJumpError - no block given (yield):
+  app/controllers/sessions_controller.rb:16:in `create'
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/5385fa17358c27e8/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:22:17 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:22:31 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#create[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"ctl8+PsDpfMWUUYXptyShxEEoAQTplL7Nsk4zXtvTM4E3pntxopohOhaN++h8ECKiro87JPAX7lNrBJ9Fq0fmg==", "user"=>{"username"=>"felixreynosob", "password"=>"[FILTERED]"}}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "felixreynosob"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/models/user.rb:12
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in [0;33;49m283ms[0m [0;30;49m(ActiveRecord: 5.3ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+LocalJumpError - no block given (yield):
+  app/controllers/sessions_controller.rb:17:in `create'
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/a9700f6b4adf215b/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:22:32 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:22:44 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#create[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"ctl8+PsDpfMWUUYXptyShxEEoAQTplL7Nsk4zXtvTM4E3pntxopohOhaN++h8ECKiro87JPAX7lNrBJ9Fq0fmg==", "user"=>{"username"=>"felixreynosob", "password"=>"[FILTERED]"}}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "felixreynosob"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/models/user.rb:12
+[INFO ] Redirected to http://localhost:3000/users/5
+[INFO ] Completed [0;32;49m302 Found[0m in [0;33;49m288ms[0m [0;30;49m(ActiveRecord: 5.7ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/5" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:22:44 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"5"}
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 96ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+NoMethodError - undefined method `require_current_user' for #<UsersController:0x00007fa9a92b36d0>
+Did you mean?  require_current_user!:
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/94c16f21fa160cf2/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:22:45 -0400[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:23:24 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#create[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"ctl8+PsDpfMWUUYXptyShxEEoAQTplL7Nsk4zXtvTM4E3pntxopohOhaN++h8ECKiro87JPAX7lNrBJ9Fq0fmg==", "user"=>{"username"=>"felixreynosob", "password"=>"[FILTERED]"}}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "felixreynosob"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/models/user.rb:12
+[INFO ] Redirected to http://localhost:3000/users/5
+[INFO ] Completed [0;32;49m302 Found[0m in [0;33;49m279ms[0m [0;30;49m(ActiveRecord: 5.0ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/5" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:23:24 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"5"}
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 95ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+NoMethodError - undefined method `require_current_user' for #<UsersController:0x00007fa9a816fd88>
+Did you mean?  require_current_user!:
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/20b4b40f3aa09aec/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:23:24 -0400[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/5" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:23:53 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"5"}
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 170ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+NoMethodError - undefined method `require_current_user' for #<UsersController:0x00007fa9a3c16688>
+Did you mean?  require_current_user!:
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/ee4ad59615e60c74/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:23:54 -0400[0m
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/1" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:24:13 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"1"}
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 96ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+NoMethodError - undefined method `require_current_user' for #<UsersController:0x00007fa9a81bfe78>
+Did you mean?  require_current_user!:
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/1c2b8a264a030a16/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:24:13 -0400[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/5" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:24:20 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"5"}
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 111ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+NoMethodError - undefined method `require_current_user' for #<UsersController:0x00007fa9a1f596a8>
+Did you mean?  require_current_user!:
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/b58fdd84c742ecd5/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:24:20 -0400[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/5" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:03 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"5"}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lcYyNqvhp-NuMvfVuXiupw"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/application_controller.rb:20
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 14ms [0;30;49m(ActiveRecord: 5.9ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+LocalJumpError - no block given (yield):
+  app/controllers/users_controller.rb:19:in `show'
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/0ef293a64735389c/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:04 -0400[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/5" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:10 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"5"}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lcYyNqvhp-NuMvfVuXiupw"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/application_controller.rb:20
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:19
+[INFO ]   Rendering users/show.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/show.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.4ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 45ms [0;30;49m(Views: 28.3ms | ActiveRecord: 5.6ms)[0m
+[INFO ] [1;32;49mDELETE [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:13 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#destroy[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"nfkNfGVKA2oCvUmSg5RUbLFY9cUzb+6qI625nmQOTtrr/uhpWMPOHfy2OGqEuIZhKuZpLbMJ4+hYyJMuCcwdjg=="}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lcYyNqvhp-NuMvfVuXiupw"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/application_controller.rb:20
+[INFO ] Redirected to http://localhost:3000/session/new
+[INFO ] Completed [0;32;49m302 Found[0m in 2ms [0;30;49m(ActiveRecord: 0.2ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/session/new" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:13 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#new[0m as [0;33;49mHTML[0m
+[INFO ]   Rendering sessions/new.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49msessions/new.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.4ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 23ms [0;30;49m(Views: 22.5ms | ActiveRecord: 0.0ms)[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:17 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#create[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"PBqCtUA2ZROZjbY+mzPSETJOmVZelJr2lZo345FM97pKHWegfb+oZGeGx8acHwAcqfAFvt7yl7Tu/x1T/I6k7g==", "user"=>{"username"=>"felixreynosob", "password"=>"[FILTERED]"}}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "felixreynosob"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/models/user.rb:12
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in [0;33;49m260ms[0m [0;30;49m(ActiveRecord: 0.3ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+LocalJumpError - no block given (yield):
+  app/controllers/sessions_controller.rb:17:in `create'
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/b9f01c217808488a/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:17 -0400[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:25 -0400[0m
+[[0;37;41mFATAL[0m] [0;31;49mActionController::RoutingError (No route matches [GET] "/session"):[0m
+[[0;37;41mFATAL[0m] [0;31;49mactionpack (5.2.4.2) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+web-console (3.7.0) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.7.0) lib/web_console/middleware.rb:30:in `block in call'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `catch'
+web-console (3.7.0) lib/web_console/middleware.rb:20:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4.2) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4.2) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4.2) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.2) lib/rack/method_override.rb:24:in `call'
+rack (2.2.2) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4.2) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.2.2) lib/rack/sendfile.rb:110:in `call'
+railties (5.2.4.2) lib/rails/engine.rb:524:in `call'
+puma (3.12.4) lib/puma/configuration.rb:227:in `call'
+puma (3.12.4) lib/puma/server.rb:675:in `handle_request'
+puma (3.12.4) lib/puma/server.rb:476:in `process_client'
+puma (3.12.4) lib/puma/server.rb:334:in `block in run'
+puma (3.12.4) lib/puma/thread_pool.rb:135:in `block in spawn_thread'[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:30 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#create[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"PBqCtUA2ZROZjbY+mzPSETJOmVZelJr2lZo345FM97pKHWegfb+oZGeGx8acHwAcqfAFvt7yl7Tu/x1T/I6k7g==", "user"=>{"username"=>"felixreynosob", "password"=>"[FILTERED]"}}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "felixreynosob"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/models/user.rb:12
+[INFO ] Redirected to http://localhost:3000/users/5
+[INFO ] Completed [0;32;49m302 Found[0m in [0;33;49m272ms[0m [0;30;49m(ActiveRecord: 5.5ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/5" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:30 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"5"}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lcYyNqvhp-NuMvfVuXiupw"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/application_controller.rb:20
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:19
+[INFO ]   Rendering users/show.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/show.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.3ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 25ms [0;30;49m(Views: 21.3ms | ActiveRecord: 0.5ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/5" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:36 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"5"}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lcYyNqvhp-NuMvfVuXiupw"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/application_controller.rb:20
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:19
+[INFO ]   Rendering users/show.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/show.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.3ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 26ms [0;30;49m(Views: 23.8ms | ActiveRecord: 0.5ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:39 -0400[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+AbstractController::ActionNotFound - The action 'index' could not be found for UsersController:
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/b296bf0b0bb228e5/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:39 -0400[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/2" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:43 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"2"}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lcYyNqvhp-NuMvfVuXiupw"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/application_controller.rb:20
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:19
+[INFO ]   Rendering users/show.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/show.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m5.2ms[0m
+[INFO ] Completed [0;31;49m500 Internal Server Error[0m in 20ms [0;30;49m(ActiveRecord: 0.9ms)[0m
+[[0;37;41mFATAL[0m] [0;31;49m
+NoMethodError - undefined method `username' for nil:NilClass:
+  app/views/users/show.html.erb:1:in `_app_views_users_show_html_erb___2394538320217723258_70183277011820'
+  app/controllers/users_controller.rb:20:in `show'
+[0m
+[INFO ] [1;32;49mPOST   [0m[1;37;49m "/__better_errors/c2f9b75bc831b888/variables" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:43 -0400[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/5" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:50 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"5"}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lcYyNqvhp-NuMvfVuXiupw"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/application_controller.rb:20
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/users_controller.rb:19
+[INFO ]   Rendering users/show.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49musers/show.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.4ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 29ms [0;30;49m(Views: 25.6ms | ActiveRecord: 0.6ms)[0m
+[INFO ] [1;32;49mDELETE [0m[1;37;49m "/session" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:52 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#destroy[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"authenticity_token"=>"F+XgjQSJkO5Xq7OarfmZHVVkgnAXoeXahES+jgStXYth4gWYOQBdmamgwmKq1UsQztoemJfH6Jj/IZQ+aW8O3w=="}
+[[1;30;49mDEBUG[0m]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lcYyNqvhp-NuMvfVuXiupw"], ["LIMIT", 1]]
+[[1;30;49mDEBUG[0m]   ↳ app/controllers/application_controller.rb:20
+[INFO ] Redirected to http://localhost:3000/session/new
+[INFO ] Completed [0;32;49m302 Found[0m in 3ms [0;30;49m(ActiveRecord: 0.3ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/session/new" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:25:52 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#new[0m as [0;33;49mHTML[0m
+[INFO ]   Rendering sessions/new.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49msessions/new.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.4ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 23ms [0;30;49m(Views: 22.4ms | ActiveRecord: 0.0ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/5" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:26:00 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"5"}
+[INFO ] Redirected to http://localhost:3000/session/new
+[INFO ] Filter chain halted as :require_current_user! rendered or redirected
+[INFO ] Completed [0;32;49m302 Found[0m in 2ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/session/new" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:26:00 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#new[0m as [0;33;49mHTML[0m
+[INFO ]   Rendering sessions/new.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49msessions/new.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.3ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 22ms [0;30;49m(Views: 21.3ms | ActiveRecord: 0.0ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/users/5" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:26:06 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mUsersController#show[0m as [0;33;49mHTML[0m
+[INFO ]   Parameters: {"id"=>"5"}
+[INFO ] Redirected to http://localhost:3000/session/new
+[INFO ] Filter chain halted as :require_current_user! rendered or redirected
+[INFO ] Completed [0;32;49m302 Found[0m in 1ms [0;30;49m(ActiveRecord: 0.0ms)[0m
+[INFO ] [1;32;49mGET    [0m[1;37;49m "/session/new" [0m for [0;33;49m1[0m[0;30;49m  at 2020-04-16 11:26:06 -0400[0m
+[INFO ] [0;35;49m===[0m Processing by [0;35;49mSessionsController#new[0m as [0;33;49mHTML[0m
+[INFO ]   Rendering sessions/new.html.erb within layouts/application
+[INFO ] [0;30;49m  Rendered [0m[1;30;49msessions/new.html.erb[0m [0;30;49mwithin [0m[1;30;49mlayouts/application[0m [0;30;49m0.5ms[0m
+[INFO ] Completed [0;32;49m200 OK[0m in 23ms [0;30;49m(Views: 22.6ms | ActiveRecord: 0.0ms)[0m
